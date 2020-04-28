@@ -1,5 +1,7 @@
-import { Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {House} from '../house';
+import {Wizard} from '../wizard';
+import {WIZARDS} from '../mock-wizards';
 
 @Component({
   selector: 'app-house-wizards',
@@ -8,7 +10,10 @@ import {House} from '../house';
 })
 export class HouseWizardsComponent implements OnInit {
   @Input() house: House;
-  constructor() { }
+  wizards = WIZARDS;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

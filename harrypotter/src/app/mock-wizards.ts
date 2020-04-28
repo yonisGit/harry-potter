@@ -67,7 +67,7 @@ export const WIZARDS: Wizard[] = [
   {
     name: 'Draco Malfoy',
     age: 25,
-    image: 'src/assets/wizard_images/slytherin/draco.png',
+    image: '../assets/wizard_images/slytherin/draco.png',
     spells: ['Alohomora', 'Arresto Momentum', 'Expelliarmus', 'Lumos'],
     house: 4
   },

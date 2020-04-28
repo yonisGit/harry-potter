@@ -8,4 +8,13 @@
     </label>
   </div>
 
+  <ul class="wizards">
+    <div *ngFor="let wizard of wizards">
+      <li *ngIf="house.id == wizard.house">
+      <img class="image" src={{wizard.image}}> {{wizard.name}}
+      </li>
+    </div>
+  </ul>
+
 </div>
+
