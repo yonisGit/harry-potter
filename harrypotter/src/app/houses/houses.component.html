@@ -1,1 +1,7 @@
-<p>houses works!</p>
+<h2>Houses</h2>
+<ul class="heroes">
+  <li *ngFor="let house of houses" (click)="onSelect(house)">
+    <span class="badge"><img class="image" src={{house.image}}></span> {{house.name}}
+  </li>
+</ul>
+

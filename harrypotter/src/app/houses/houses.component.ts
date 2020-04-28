@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {House} from '../house';
+import {HOUSES} from '../mock-houses';
 
 @Component({
   selector: 'app-houses',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./houses.component.css']
 })
 export class HousesComponent implements OnInit {
+  houses = HOUSES;
+  selectedHouse: House;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  onSelect(house: House) {
+  this.selectedHouse = house;
+  }
 }
