@@ -5,11 +5,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HousesComponent } from './houses/houses.component';
+import { HouseWizardsComponent } from './house-wizards/house-wizards.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HousesComponent
+    HousesComponent,
+    HouseWizardsComponent
   ],
   imports: [
     BrowserModule,

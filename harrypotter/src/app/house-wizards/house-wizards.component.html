@@ -1,0 +1,11 @@
+<div *ngIf="house">
+
+  <h2>{{house.name}} Wizards</h2>
+  <div><span>id: </span>{{house.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="house.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>
