@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {House} from '../house';
 import {Wizard} from '../wizard';
 import {WIZARDS} from '../mock-wizards';
+import {WizardService} from '../wizard.service';
 
 @Component({
   selector: 'app-house-wizards',
@@ -10,12 +11,18 @@ import {WIZARDS} from '../mock-wizards';
 })
 export class HouseWizardsComponent implements OnInit {
   @Input() house: House;
-  wizards = WIZARDS;
+  wizards: Wizard[];
 
-  constructor() {
+  constructor(private wizardService: WizardService) {
+  }
+
+  getWizards(): void {
+    this.wizardService.getWizards()
+      .subscribe(wizards => this.wizards = wizards);
   }
 
   ngOnInit(): void {
+    this.getWizards();
   }
 
 }
