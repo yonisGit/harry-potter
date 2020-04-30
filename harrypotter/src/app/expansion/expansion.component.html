@@ -1,0 +1,12 @@
+<mat-accordion class="heroes">
+  <mat-expansion-panel *ngFor="let house of houses" (click)="onSelect(house)"
+                       [class.selected]="house === selectedHouse">
+    <mat-expansion-panel-header>
+      <mat-panel-title><span class="badge"><img class="image" src={{house.image}}></span><strong>{{house.name}}</strong>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-house-wizards [house]="selectedHouse"></app-house-wizards>
+
+  </mat-expansion-panel>
+</mat-accordion>

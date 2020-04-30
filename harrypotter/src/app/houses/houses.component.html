@@ -1,10 +1,4 @@
 <h2>Houses</h2>
-<ul class="heroes">
-  <li *ngFor="let house of houses" (click)="onSelect(house)" [class.selected]="house === selectedHouse">
-    <span class="badge"><img class="image" src={{house.image}}></span> {{house.name}}
-  </li>
-</ul>
-
-<app-house-wizards [house]="selectedHouse"></app-house-wizards>
+<app-expansion></app-expansion>
 
 
