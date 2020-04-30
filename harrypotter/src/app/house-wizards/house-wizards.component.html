@@ -1,4 +1,4 @@
-<div *ngIf="house">
+<div class="wizards" *ngIf="house">
 
   <h2>{{house.name}} Wizards</h2>
   <div><span>id: </span>{{house.id}}</div>
@@ -8,7 +8,7 @@
     </label>
   </div>
 
-  <ul class="wizards">
+  <ul>
     <div *ngFor="let wizard of wizards">
       <li *ngIf="house.id == wizard.house">
       <img class="image" src={{wizard.image}}> {{wizard.name}}
