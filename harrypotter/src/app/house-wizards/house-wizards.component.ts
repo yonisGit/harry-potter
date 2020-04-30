@@ -12,6 +12,7 @@ import {WizardService} from '../wizard.service';
 export class HouseWizardsComponent implements OnInit {
   @Input() house: House;
   wizards: Wizard[];
+  wizardPrefix: string;
 
   constructor(private wizardService: WizardService) {
   }
