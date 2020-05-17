@@ -11,6 +11,7 @@
 }
 
 button {
+  width: 100%;
   margin-top: 0px;
   font-family: Arial;
   background-color: #eee;
@@ -34,10 +35,11 @@ button:disabled {
 [class*='col-'] {
   float: left;
   padding-right: 20px;
-  padding-bottom: 20px;
+  /*padding-bottom: 30px;*/
 }
 [class*='col-']:last-of-type {
   padding-right: 0;
+  padding-bottom: 35px;
 }
 a {
   text-decoration: none;
@@ -61,10 +63,10 @@ h4 {
   width: 33%;
 }
 .module {
-  padding: 20px;
+  padding: 1px;
   text-align: center;
-  color: #eee;
-  max-height: 120px;
+  color: #ab98ee;
+  max-height: 160px;
   min-width: 120px;
   background-color: #3f525c;
   border-radius: 2px;
@@ -75,11 +77,13 @@ h4 {
   color: #607d8b;
 }
 .grid-pad {
-  padding: 10px 0;
+  padding-top: 10px;
 }
-.grid-pad > [class*='col-']:last-of-type {
-  padding-right: 20px;
-}
+/*.grid-pad > [class*='col-']:last-of-type {*/
+/*  padding-top: 10px;*/
+/*  padding-right: 20px;*/
+/*  padding-bottom: 30px;*/
+/*}*/
 @media (max-width: 600px) {
   .module {
     font-size: 10px;
