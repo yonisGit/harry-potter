@@ -47,6 +47,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSliderModule} from '@angular/material/slider';
 import { ExpansionComponent } from './expansion/expansion.component';
+import { WizardUpdateComponent } from './wizard-update/wizard-update.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ExpansionComponent } from './expansion/expansion.component';
     HousesComponent,
     HouseWizardsComponent,
     NavigateComponent,
-    ExpansionComponent
+    ExpansionComponent,
+    WizardUpdateComponent
   ],
   imports: [
     BrowserModule,
