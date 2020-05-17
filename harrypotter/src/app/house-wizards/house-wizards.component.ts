@@ -3,6 +3,7 @@ import {House} from '../house';
 import {Wizard} from '../wizard';
 import {WIZARDS} from '../mock-wizards';
 import {WizardService} from '../wizard.service';
+import {WizardUpdateComponent} from '../wizard-update/wizard-update.component';
 
 @Component({
   selector: 'app-house-wizards',
@@ -13,6 +14,7 @@ export class HouseWizardsComponent implements OnInit {
   @Input() house: House;
   wizards: Wizard[];
   wizardPrefix: string;
+  public toOpen: boolean;
 
   constructor(private wizardService: WizardService) {
   }
@@ -23,7 +25,11 @@ export class HouseWizardsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.toOpen = false;
     this.getWizards();
   }
 
+  editWizard(wizard: Wizard) {
+    this.toOpen = true;
+  }
 }
