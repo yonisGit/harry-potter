@@ -48,6 +48,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSliderModule} from '@angular/material/slider';
 import { ExpansionComponent } from './expansion/expansion.component';
 import { WizardUpdateComponent } from './wizard-update/wizard-update.component';
+import { WizardDialogComponent } from './wizard-dialog/wizard-dialog.component';
+import { WizardDialogContentComponent } from './wizard-dialog-content/wizard-dialog-content.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { WizardUpdateComponent } from './wizard-update/wizard-update.component';
     HouseWizardsComponent,
     NavigateComponent,
     ExpansionComponent,
-    WizardUpdateComponent
+    WizardUpdateComponent,
+    WizardDialogComponent,
+    WizardDialogContentComponent
   ],
   imports: [
     BrowserModule,

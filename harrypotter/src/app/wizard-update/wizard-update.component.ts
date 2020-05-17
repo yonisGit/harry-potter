@@ -10,8 +10,6 @@ import {HouseWizardsComponent} from '../house-wizards/house-wizards.component';
   styleUrls: ['./wizard-update.component.css']
 })
 export class WizardUpdateComponent {
-  @Input() toOpen: boolean;
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

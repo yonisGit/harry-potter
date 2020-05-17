@@ -4,6 +4,8 @@ import {Wizard} from '../wizard';
 import {WIZARDS} from '../mock-wizards';
 import {WizardService} from '../wizard.service';
 import {WizardUpdateComponent} from '../wizard-update/wizard-update.component';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {WizardDialogContentComponent} from '../wizard-dialog-content/wizard-dialog-content.component';
 
 @Component({
   selector: 'app-house-wizards',
@@ -14,9 +16,17 @@ export class HouseWizardsComponent implements OnInit {
   @Input() house: House;
   wizards: Wizard[];
   wizardPrefix: string;
-  public toOpen: boolean;
 
-  constructor(private wizardService: WizardService) {
+  constructor(private wizardService: WizardService, public dialog: MatDialog) {
+  }
+
+  openDialog(wizard: Wizard) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = wizard;
+    const dialogRef = this.dialog.open(WizardDialogContentComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   getWizards(): void {
@@ -25,11 +35,7 @@ export class HouseWizardsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.toOpen = false;
     this.getWizards();
   }
 
-  editWizard(wizard: Wizard) {
-    this.toOpen = true;
-  }
 }

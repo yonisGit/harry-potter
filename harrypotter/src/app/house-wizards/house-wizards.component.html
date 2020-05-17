@@ -8,7 +8,7 @@
   <div class="grid grid-pad">
     <div *ngFor="let wizard of wizards" class="col-1-3">
       <a *ngIf="house.id == wizard.house && (wizardPrefix==null || wizard.name.startsWith(wizardPrefix))">
-        <button (click)="editWizard(wizard)">Edit {{wizard.name}}</button>
+        <button mat-button (click)="openDialog(wizard)">Edit {{wizard.name}}</button>
         <div class="module hero">
           <img class="image" src={{wizard.image}}>
           <h4>{{wizard.name}}</h4>
@@ -16,7 +16,4 @@
       </a>
     </div>
   </div>
-
 </div>
-
-<app-wizard-update [toOpen]="toOpen"></app-wizard-update>
