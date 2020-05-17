@@ -6,8 +6,9 @@
   </label>
 
   <ul>
+<!--    <p>"this is:"{{wizardPrefix==null}}</p>-->
     <div *ngFor="let wizard of wizards">
-      <li *ngIf="house.id == wizard.house && wizard.name.startsWith(wizardPrefix)">
+      <li *ngIf="house.id == wizard.house && (wizardPrefix==null || wizard.name.startsWith(wizardPrefix))">
         <img class="image" src={{wizard.image}}> {{wizard.name}}
       </li>
     </div>
