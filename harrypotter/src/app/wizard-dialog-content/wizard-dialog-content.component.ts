@@ -9,10 +9,16 @@ import {House} from '../house';
   styleUrls: ['./wizard-dialog-content.component.css']
 })
 export class WizardDialogContentComponent implements OnInit {
-  justString: string;
+  name: string;
+  age: number;
+  spells: string[];
+  house: number;
 
   constructor(@Inject(MAT_DIALOG_DATA) data) {
-    this.justString = data.name;
+    this.name = data.name;
+    this.age = data.age;
+    this.spells = data.spells;
+    this.house = data.house;
   }
 
   ngOnInit(): void {
