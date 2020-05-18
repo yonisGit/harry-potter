@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -8,24 +9,24 @@ import {HousesComponent} from './houses/houses.component';
 import {HouseWizardsComponent} from './house-wizards/house-wizards.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { NavigateComponent } from './navigate/navigate.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
+import {NavigateComponent} from './navigate/navigate.component';
+import {LayoutModule} from '@angular/cdk/layout';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import { PortalModule } from '@angular/cdk/portal';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {PortalModule} from '@angular/cdk/portal';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
-import { MatSortModule } from '@angular/material/sort';
+import {MatSortModule} from '@angular/material/sort';
 import {MatBadgeModule} from '@angular/material/badge';
-import { MatDividerModule } from '@angular/material/divider';
+import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -46,10 +47,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSliderModule} from '@angular/material/slider';
-import { ExpansionComponent } from './expansion/expansion.component';
-import { WizardUpdateComponent } from './wizard-update/wizard-update.component';
-import { WizardDialogComponent } from './wizard-dialog/wizard-dialog.component';
-import { WizardDialogContentComponent } from './wizard-dialog-content/wizard-dialog-content.component';
+import {ExpansionComponent} from './expansion/expansion.component';
+import {WizardUpdateComponent} from './wizard-update/wizard-update.component';
+import {WizardDialogComponent} from './wizard-dialog/wizard-dialog.component';
+import {WizardDialogContentComponent} from './wizard-dialog-content/wizard-dialog-content.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { WizardDialogContentComponent } from './wizard-dialog-content/wizard-dia
     ExpansionComponent,
     WizardUpdateComponent,
     WizardDialogComponent,
-    WizardDialogContentComponent
+    WizardDialogContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,6 +114,7 @@ import { WizardDialogContentComponent } from './wizard-dialog-content/wizard-dia
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

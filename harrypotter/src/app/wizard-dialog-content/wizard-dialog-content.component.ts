@@ -24,4 +24,7 @@ export class WizardDialogContentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submitUpdate() {
+
+  }
 }
