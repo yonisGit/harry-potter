@@ -1,10 +1,15 @@
 package server.elisha.harry;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import server.elisha.harry.Entity.Wizard;
 
+import java.util.List;
+
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/harry-potter")
 public class Controller {
@@ -25,8 +30,8 @@ public class Controller {
     }
 
     @GetMapping(path = "/wizards")
-    public String[] getWizards() {
-        return mockWizards.wizardJsons;
+    public List<Wizard> getWizards() {
+        return mockWizards.getWizards();
     }
 
 }

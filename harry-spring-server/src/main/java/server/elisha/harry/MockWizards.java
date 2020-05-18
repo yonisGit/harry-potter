@@ -1,6 +1,11 @@
 package server.elisha.harry;
 
 import org.springframework.stereotype.Service;
+import server.elisha.harry.Entity.Wizard;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class MockWizards {
@@ -19,4 +24,27 @@ public class MockWizards {
                     "{name:'Bellatrix Lastrange',age:34,image:'../assets/wizard_images/slytherin/bellatrix.png',spells:['Alohomora','Expecto Patronum','Expelliarmus','Lumos'],house:4}",
                     "{name:'Severus Snape',age:43,image:'../assets/wizard_images/slytherin/snape.jpg',spells:['Alohomora','Arresto Momentum','Avada Kedavra','Expecto Patronum','Expelliarmus'],house:4}"
             };
+
+    public List<Wizard> wizards;
+
+    public List<Wizard> getWizards() {
+        String[] s = {"Alohomora", "Arresto Momentum", "Avada Kedavra", "Expecto Patronum", "Expelliarmus", "Lumos"};
+        ArrayList<String> spells = new ArrayList<>();
+        spells.addAll(Arrays.asList(s));
+        wizards = new ArrayList<>();
+        wizards.add(new Wizard("Harry Potter", 25, "../assets/wizard_images/gryffindor/harry.jpg",spells , 1));
+        wizards.add(new Wizard("Hermione Granger", 25, "../assets/wizard_images/gryffindor/hermione.jpg",spells , 1));
+        wizards.add(new Wizard("Ron Weasly", 25, "../assets/wizard_images/gryffindor/ron.jpg",spells , 1));
+        wizards.add(new Wizard("Cedric Diggory", 28, "../assets/wizard_images/hufflepuff/diggory.png",spells , 2));
+        wizards.add(new Wizard("Leanne", 21, "../assets/wizard_images/hufflepuff/leanne.png",spells , 2));
+        wizards.add(new Wizard("Nymphadora", 30, "../assets/wizard_images/hufflepuff/nymphadora.jpg",spells , 2));
+        wizards.add(new Wizard("Cho Chang", 25, "../assets/wizard_images/ravenclaw/cho.jpg",spells , 3));
+        wizards.add(new Wizard("Luna Hababuna", 21, "../assets/wizard_images/ravenclaw/luna.jpg",spells , 3));
+        wizards.add(new Wizard("Sybill Hameshugaat", 41, "../assets/wizard_images/ravenclaw/sybill.jpg",spells , 3));
+        wizards.add(new Wizard("Draco Malfoy", 25, "../assets/wizard_images/slytherin/draco.png",spells , 4));
+        wizards.add(new Wizard("Bellatrix Lastrange", 34, "../assets/wizard_images/slytherin/bellatrix.png",spells , 4));
+        wizards.add(new Wizard("Severus Snape", 43, "../assets/wizard_images/slytherin/snape.jpg",spells , 4));
+        return wizards;
+    }
+
 }

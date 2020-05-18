@@ -9,10 +9,10 @@ import {HttpClient} from '@angular/common/http';
 })
 export class WizardService {
 
-  requestHouses = 'http://localhost:8080/harry-potter/wizards';
+  requestWizards = 'http://localhost:8080/harry-potter/wizards';
 
   getWizards(): Observable<Wizard[]> {
-    return this.http.get<Wizard[]>(this.requestHouses);
+    return this.http.get<Wizard[]>(this.requestWizards);
   }
 
   constructor(private http: HttpClient) {
