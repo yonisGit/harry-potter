@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Inject} from '@angular/core';
 import {House} from '../house';
 import {Wizard} from '../wizard';
 import {WIZARDS} from '../mock-wizards';
@@ -6,6 +6,7 @@ import {WizardService} from '../wizard.service';
 import {WizardUpdateComponent} from '../wizard-update/wizard-update.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {WizardDialogContentComponent} from '../wizard-dialog-content/wizard-dialog-content.component';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-house-wizards',
@@ -20,7 +21,7 @@ export class HouseWizardsComponent implements OnInit {
   constructor(private wizardService: WizardService, public dialog: MatDialog) {
   }
 
-  openDialog(wizard: Wizard) {
+  openDialog(wizard: Observable<Wizard>) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = wizard;
     const dialogRef = this.dialog.open(WizardDialogContentComponent, dialogConfig);
@@ -32,6 +33,14 @@ export class HouseWizardsComponent implements OnInit {
   getWizards(): void {
     this.wizardService.getWizards()
       .subscribe(wizards => this.wizards = wizards);
+  }
+
+  setWizard(newWizard: Wizard): void {
+    this.wizards.forEach(wizard => {
+      if (wizard.name === newWizard.name) {
+        wizard.age = 99;
+      }
+    });
   }
 
   ngOnInit(): void {

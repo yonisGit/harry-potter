@@ -27,7 +27,7 @@ public class MockWizards {
 
     public List<Wizard> wizards;
 
-    public List<Wizard> getWizards() {
+    public void initWizards(){
         String[] s = {"Alohomora", "Arresto Momentum", "Avada Kedavra", "Expecto Patronum", "Expelliarmus", "Lumos"};
         ArrayList<String> spells = new ArrayList<>();
         spells.addAll(Arrays.asList(s));
@@ -44,7 +44,19 @@ public class MockWizards {
         wizards.add(new Wizard("Draco Malfoy", 25, "../assets/wizard_images/slytherin/draco.png",spells , 4));
         wizards.add(new Wizard("Bellatrix Lastrange", 34, "../assets/wizard_images/slytherin/bellatrix.png",spells , 4));
         wizards.add(new Wizard("Severus Snape", 43, "../assets/wizard_images/slytherin/snape.jpg",spells , 4));
+    }
+
+    public List<Wizard> getWizards() {
         return wizards;
+    }
+
+    public void editWizard(Wizard newWizard){
+        wizards.forEach(wizard -> {
+            if(wizard.getName().equals(newWizard.getName())){
+                wizards.remove(wizard);
+            }
+        });
+        wizards.add(newWizard);
     }
 
 }
