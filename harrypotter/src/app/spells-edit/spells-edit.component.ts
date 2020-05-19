@@ -32,8 +32,12 @@ export class SpellsEditComponent implements OnInit {
     if ((value || '').trim()) {
       const spellName = value.trim();
       if (this.existSpells.includes(spellName)) {
-        this.spells.push(spellName);
-        this.wizard.spells = this.spells;
+        if (!this.spells.includes(spellName)) {
+          this.spells.push(spellName);
+          this.wizard.spells = this.spells;
+        } else {
+          alert('The ' + spellName + ' spell is already exists! Sorry...');
+        }
       } else {
         alert('The ' + spellName + ' spell doesn\'t exist in the allowed spell list! Sorry...');
       }

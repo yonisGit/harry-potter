@@ -16,22 +16,13 @@ import {WizardService} from '../wizard.service';
 export class WizardDialogContentComponent implements OnInit {
   name: string;
   age: number;
-  // image: string;
   spellString: string;
   spells: string[];
-  // house: number;
   @Input() wizard: Wizard;
-
-  // originalWizard: Wizard;
 
   constructor(public dialogRef: MatDialogRef<WizardDialogContentComponent>,
               @Inject(MAT_DIALOG_DATA) data, private wizardService: WizardService) {
     this.wizard = data;
-    // this.name = data.name;
-    // this.age = data.age;
-    // this.image = data.image;
-    // this.spells = data.spells;
-    // this.house = data.house;
   }
 
   ngOnInit(): void {
