@@ -38,16 +38,7 @@ export class HouseWizardsComponent implements OnInit {
       .subscribe(wizards => this.wizards = wizards);
   }
 
-  setWizard(newWizard: Wizard): void {
-    this.wizards.forEach(wizard => {
-      if (wizard.name === newWizard.name) {
-        wizard.age = 99;
-      }
-    });
-  }
-
   ngOnInit(): void {
     this.getWizards();
   }
-
 }

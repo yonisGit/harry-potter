@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {HOUSES} from '../mock-houses';
+import {Component, OnInit} from '@angular/core';
 import {House} from '../house';
+import {HouseService} from '../house.service';
 
 @Component({
   selector: 'app-expansion',
@@ -9,13 +9,20 @@ import {House} from '../house';
 })
 export class ExpansionComponent implements OnInit {
   panelOpenState = false;
-  houses = HOUSES;
+  houses: House[];
   selectedHouse: House;
 
-  constructor() {
+  constructor(private houseService: HouseService) {
+  }
+
+  getHouses(): void {
+    this.houseService.getHouses().subscribe(
+      houses => this.houses = houses
+    );
   }
 
   ngOnInit(): void {
+    this.getHouses();
   }
 
   onSelect(house: House) {
