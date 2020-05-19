@@ -51,6 +51,7 @@ import {ExpansionComponent} from './expansion/expansion.component';
 import {WizardDialogContentComponent} from './wizard-dialog-content/wizard-dialog-content.component';
 import { SpellsComponent } from './spells/spells.component';
 import { SpellsEditComponent } from './spells-edit/spells-edit.component';
+import { SpellAutocompleteComponent } from './spell-autocomplete/spell-autocomplete.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { SpellsEditComponent } from './spells-edit/spells-edit.component';
     WizardDialogContentComponent,
     SpellsComponent,
     SpellsEditComponent,
+    SpellAutocompleteComponent,
   ],
   imports: [
     BrowserModule,
