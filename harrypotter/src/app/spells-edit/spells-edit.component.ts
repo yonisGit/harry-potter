@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Wizard} from '../wizard';
+import {SpellsComponent} from '../spells/spells.component';
+import {SpellsService} from '../spells.service';
 
 @Component({
   selector: 'app-spells-edit',
@@ -16,6 +18,7 @@ export class SpellsEditComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   @Input() spells: string[];
   @Input() wizard: Wizard;
+  existSpells: string[];
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -23,7 +26,13 @@ export class SpellsEditComponent implements OnInit {
 
     // Add our spell
     if ((value || '').trim()) {
-      this.spells.push(value.trim());
+      const spellName = value.trim();
+      if (this.existSpells.includes(spellName)) {
+        this.spells.push(spellName);
+        this.wizard.spells = this.spells;
+      } else {
+        alert('The ' + spellName + ' doesn\'t exist in the allowed spell list! Sorry...');
+      }
     }
 
     // Reset the input value
@@ -41,10 +50,18 @@ export class SpellsEditComponent implements OnInit {
     }
   }
 
-  constructor() {
+  constructor(private spellsService: SpellsService) {
   }
 
+  getSpells(): void {
+    this.spellsService.getSpells().subscribe(
+      spells => this.existSpells = spells
+    );
+  }
+
+
   ngOnInit(): void {
+    this.getSpells();
   }
 
 }
