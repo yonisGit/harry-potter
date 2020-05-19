@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {Wizard} from '../wizard';
 
 @Component({
   selector: 'app-spells-edit',
@@ -13,17 +14,16 @@ export class SpellsEditComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruits: string[] = [
-    'yarden', 'kakerit'
-  ];
+  @Input() spells: string[];
+  @Input() wizard: Wizard;
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
+    // Add our spell
     if ((value || '').trim()) {
-      this.fruits.push(value.trim());
+      this.spells.push(value.trim());
     }
 
     // Reset the input value
@@ -33,10 +33,11 @@ export class SpellsEditComponent implements OnInit {
   }
 
   remove(spell: string): void {
-    const index = this.fruits.indexOf(spell);
+    const index = this.spells.indexOf(spell);
 
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.spells.splice(index, 1);
+      this.wizard.spells = this.spells;
     }
   }
 

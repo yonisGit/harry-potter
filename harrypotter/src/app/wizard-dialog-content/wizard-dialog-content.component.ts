@@ -46,7 +46,7 @@ export class WizardDialogContentComponent implements OnInit {
       name: this.name,
       age: Number(this.age),
       image: this.wizard.image,
-      spells: this.spellString.split(','),
+      spells: this.wizard.spells,
       house: Number(this.wizard.house)
     };
     const result = {old: this.wizard, wiz: newWizard};

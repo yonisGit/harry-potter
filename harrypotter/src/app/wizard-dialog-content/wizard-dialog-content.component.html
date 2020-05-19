@@ -14,9 +14,9 @@
 
     <div class="form-group">
       <label>Spells</label>
-      <input type="text" class="form-control" value="{{wizard.spells}}" [(ngModel)]="spellString" required>
+      <app-spells-edit [spells]="wizard.spells" [wizard]="wizard"></app-spells-edit>
+      <!--      <input type="text" class="form-control" value="{{wizard.spells}}" [(ngModel)]="spellString" required>-->
     </div>
-    <app-spells-edit></app-spells-edit>
     <button class="btn btn-success" (click)="submitUpdate()">Submit</button>
   </div>
 </mat-dialog-content>
