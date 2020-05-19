@@ -50,6 +50,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {ExpansionComponent} from './expansion/expansion.component';
 import {WizardDialogContentComponent} from './wizard-dialog-content/wizard-dialog-content.component';
 import { SpellsComponent } from './spells/spells.component';
+import { SpellsEditComponent } from './spells-edit/spells-edit.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { SpellsComponent } from './spells/spells.component';
     ExpansionComponent,
     WizardDialogContentComponent,
     SpellsComponent,
+    SpellsEditComponent,
   ],
   imports: [
     BrowserModule,
