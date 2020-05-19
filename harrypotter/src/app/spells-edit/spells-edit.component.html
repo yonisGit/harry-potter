@@ -6,7 +6,8 @@
       <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
     </mat-chip>
     <mat-form-field class="example-full-width">
-      <input type="text" placeholder="New spell..."
+      <input type="text"
+             class = "only-input"
              [matChipInputFor]="chipList"
              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
              [matChipInputAddOnBlur]="addOnBlur"

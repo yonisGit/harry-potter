@@ -18,10 +18,9 @@ export class SpellsEditComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  @Input() spells: string[];
+  spells: string[];
   @Input() wizard: Wizard;
   existSpells: string[];
-  spellOptions: string[];
   filteredOptions: Observable<string[]>;
   myControl = new FormControl();
 
@@ -72,6 +71,7 @@ export class SpellsEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.spells = [...this.wizard.spells];
     this.getSpells();
   }
 
