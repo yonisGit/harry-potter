@@ -8,9 +8,10 @@ import java.util.List;
 
 @Service
 public class MockSpells {
-    public List<String> spells = new ArrayList<>();
+    public List<String> spells;
 
     public void initSpells() {
+        spells = new ArrayList<>();
         String[] spellArr = {"Alohomora", "Arresto Momentum", "Avada Kedavra",
                 "Expecto Patronum", "Expelliarmus", "Lumos"};
         spells.addAll(Arrays.asList(spellArr));
