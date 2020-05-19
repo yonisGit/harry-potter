@@ -1,7 +1,6 @@
 import {Component, OnInit, Input, Inject} from '@angular/core';
 import {House} from '../house';
 import {Wizard} from '../wizard';
-import {WIZARDS} from '../mock-wizards';
 import {WizardService} from '../wizard.service';
 import {WizardUpdateComponent} from '../wizard-update/wizard-update.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';

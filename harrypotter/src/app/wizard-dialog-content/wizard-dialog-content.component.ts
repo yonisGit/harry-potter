@@ -42,6 +42,7 @@ export class WizardDialogContentComponent implements OnInit {
 
   submitUpdate() {
     const newWizard = {
+      id: this.wizard.id,
       name: this.name,
       age: Number(this.age),
       image: this.wizard.image,

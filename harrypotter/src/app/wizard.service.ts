@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Wizard} from './wizard';
-import {WIZARDS} from './mock-wizards';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';

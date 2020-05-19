@@ -6,3 +6,4 @@ export const HOUSES: House[] = [
   { id: 3, name: 'Ravenclaw', image: '../assets/house_images/Ravenclaw_Pride_Collection_Symbol.svg'},
   { id: 4, name: 'Slytherin', image: '../assets/house_images/Slytherin_House_Pride_Collection_V2.svg'}
 ];
+
