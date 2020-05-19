@@ -33,7 +33,7 @@ public class Controller {
     }
 
     @PostMapping(path = "/wizards")
-    public void editWizard(@RequestParam Wizard newWizard) {
+    public void editWizard(@RequestBody Wizard newWizard) {
         mockWizards.editWizard(newWizard);
     }
 

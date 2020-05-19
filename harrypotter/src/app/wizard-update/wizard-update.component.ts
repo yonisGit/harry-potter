@@ -3,6 +3,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {HouseWizardsComponent} from '../house-wizards/house-wizards.component';
+import {Wizard} from '../wizard';
 
 @Component({
   selector: 'app-wizard-update',
@@ -10,6 +11,8 @@ import {HouseWizardsComponent} from '../house-wizards/house-wizards.component';
   styleUrls: ['./wizard-update.component.css']
 })
 export class WizardUpdateComponent {
+  @Input() wizard: Wizard;
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -17,5 +20,9 @@ export class WizardUpdateComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver) {
+  }
+
+  submitUpdate(){
+
   }
 }

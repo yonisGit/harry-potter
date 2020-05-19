@@ -21,11 +21,15 @@ export class HouseWizardsComponent implements OnInit {
   constructor(private wizardService: WizardService, public dialog: MatDialog) {
   }
 
-  openDialog(wizard: Observable<Wizard>) {
+  openDialog(wizard: Wizard) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = wizard;
     const dialogRef = this.dialog.open(WizardDialogContentComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
+      if (result.old && result.wiz) {
+        this.wizards.splice(this.wizards.findIndex(wiz => wiz === result.old), 1);
+        this.wizards.push(result.wiz);
+      }
       console.log(`Dialog result: ${result}`);
     });
   }
