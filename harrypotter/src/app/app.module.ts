@@ -52,6 +52,7 @@ import {WizardDialogContentComponent} from './wizard-dialog-content/wizard-dialo
 import { SpellsComponent } from './spells/spells.component';
 import { SpellsEditComponent } from './spells-edit/spells-edit.component';
 import { SpellAutocompleteComponent } from './spell-autocomplete/spell-autocomplete.component';
+import { SortByNamePipe } from './sort-by-name.pipe';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SpellAutocompleteComponent } from './spell-autocomplete/spell-autocompl
     SpellsComponent,
     SpellsEditComponent,
     SpellAutocompleteComponent,
+    SortByNamePipe,
   ],
   imports: [
     BrowserModule,
