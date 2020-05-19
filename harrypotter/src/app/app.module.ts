@@ -48,9 +48,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSliderModule} from '@angular/material/slider';
 import {ExpansionComponent} from './expansion/expansion.component';
-import {WizardUpdateComponent} from './wizard-update/wizard-update.component';
-import {WizardDialogComponent} from './wizard-dialog/wizard-dialog.component';
 import {WizardDialogContentComponent} from './wizard-dialog-content/wizard-dialog-content.component';
+import { SpellsComponent } from './spells/spells.component';
 
 @NgModule({
   declarations: [
@@ -59,9 +58,8 @@ import {WizardDialogContentComponent} from './wizard-dialog-content/wizard-dialo
     HouseWizardsComponent,
     NavigateComponent,
     ExpansionComponent,
-    WizardUpdateComponent,
-    WizardDialogComponent,
     WizardDialogContentComponent,
+    SpellsComponent,
   ],
   imports: [
     BrowserModule,

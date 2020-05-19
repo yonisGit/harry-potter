@@ -1,9 +1,11 @@
 package server.elisha.harry;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import server.elisha.harry.Entity.House;
-import server.elisha.harry.Entity.Wizard;
+import server.elisha.harry.entity.House;
+import server.elisha.harry.entity.Wizard;
+import server.elisha.harry.mock.MockHouses;
+import server.elisha.harry.mock.MockSpells;
+import server.elisha.harry.mock.MockWizards;
 
 import java.util.List;
 
@@ -16,12 +18,22 @@ public class Controller {
     MockWizards mockWizards;
     final
     MockHouses mockHouses;
+    final
+    MockSpells mockSpells;
 
-    public Controller(MockWizards mockWizards, MockHouses mockHouses) {
+
+    public Controller(MockWizards mockWizards, MockHouses mockHouses, MockSpells mockSpells) {
         this.mockWizards = mockWizards;
         this.mockHouses = mockHouses;
+        this.mockSpells = mockSpells;
+        mockSpells.initSpells();
         mockHouses.initHouses();
         mockWizards.initWizards();
+    }
+
+    @GetMapping(path = "/spells")
+    public List<String> getSpells() {
+        return mockSpells.getSpells();
     }
 
     @GetMapping(path = "/houses")

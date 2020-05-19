@@ -1,11 +1,9 @@
-package server.elisha.harry;
+package server.elisha.harry.mock;
 
 import org.springframework.stereotype.Service;
-import server.elisha.harry.Entity.House;
-import server.elisha.harry.Entity.Wizard;
+import server.elisha.harry.entity.House;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service

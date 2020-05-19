@@ -1,4 +1,4 @@
-package server.elisha.harry.Entity;
+package server.elisha.harry.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

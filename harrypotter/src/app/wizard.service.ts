@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Wizard} from './wizard';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +17,6 @@ export class WizardService {
   getWizards(): Observable<Wizard[]> {
     return this.http.get<Wizard[]>(this.requestWizards);
   }
-
-  // updateWizard(wizard: Wizard): Observable<Wizard> {
-  //   return this.http.post(this.requestWizards,wizard);
-  // }
 
   addWizard(wizard: Wizard): Observable<Wizard> {
     return this.http.post<Wizard>(this.requestWizards, wizard, this.httpOptions);

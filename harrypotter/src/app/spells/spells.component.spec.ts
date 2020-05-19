@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WizardDialogComponent } from './wizard-dialog.component';
+import { SpellsComponent } from './spells.component';
 
-describe('WizardDialogComponent', () => {
-  let component: WizardDialogComponent;
-  let fixture: ComponentFixture<WizardDialogComponent>;
+describe('SpellsComponent', () => {
+  let component: SpellsComponent;
+  let fixture: ComponentFixture<SpellsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WizardDialogComponent ]
+      declarations: [ SpellsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WizardDialogComponent);
+    fixture = TestBed.createComponent(SpellsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

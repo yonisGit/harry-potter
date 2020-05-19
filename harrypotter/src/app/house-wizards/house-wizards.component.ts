@@ -2,10 +2,8 @@ import {Component, OnInit, Input, Inject} from '@angular/core';
 import {House} from '../house';
 import {Wizard} from '../wizard';
 import {WizardService} from '../wizard.service';
-import {WizardUpdateComponent} from '../wizard-update/wizard-update.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {WizardDialogContentComponent} from '../wizard-dialog-content/wizard-dialog-content.component';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-house-wizards',
