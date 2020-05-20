@@ -1,11 +1,6 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Wizard} from '../wizard';
-import {House} from '../house';
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {HttpHeaders} from '@angular/common/http';
-import {HouseWizardsComponent} from '../house-wizards/house-wizards.component';
 import {WizardService} from '../wizard.service';
 
 @Component({
@@ -16,9 +11,9 @@ import {WizardService} from '../wizard.service';
 export class WizardDialogContentComponent implements OnInit {
   name: string;
   age: number;
-  spellString: string;
   spells: string[];
   @Input() wizard: Wizard;
+  passedWizard: Wizard;
 
   constructor(public dialogRef: MatDialogRef<WizardDialogContentComponent>,
               @Inject(MAT_DIALOG_DATA) data, private wizardService: WizardService) {
@@ -26,23 +21,27 @@ export class WizardDialogContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.passedWizard = Object.create(this.wizard);
     this.name = this.wizard.name;
     this.age = this.wizard.age;
-    this.spellString = this.wizard.spells.join();
   }
 
   submitUpdate() {
     const newWizard = {
-      id: this.wizard.id,
+      id: this.passedWizard.id,
       name: this.name,
       age: Number(this.age),
-      image: this.wizard.image,
-      spells: this.wizard.spells,
-      house: Number(this.wizard.house)
+      image: this.passedWizard.image,
+      spells: this.passedWizard.spells,
+      house: Number(this.passedWizard.house)
     };
     const result = {old: this.wizard, wiz: newWizard};
-    this.wizardService.addWizard(newWizard).subscribe(
+    this.wizardService.editWizard(newWizard).subscribe(
       () => this.dialogRef.close(result)
     );
+  }
+
+  cancel() {
+
   }
 }

@@ -14,14 +14,12 @@
 
     <div class="form-group">
       <label>Spells</label>
-      <app-spells-edit [wizard]="wizard"></app-spells-edit>
+      <app-spells-edit [wizard]="passedWizard"></app-spells-edit>
       <!--      <input type="text" class="form-control" value="{{wizard.spells}}" [(ngModel)]="spellString" required>-->
     </div>
-    <button class="btn btn-success" (click)="submitUpdate()">Submit</button>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button (click)="submitUpdate()" mat-button mat-dialog-close>Update</button>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <!--  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>-->
+  <button class="btn btn-success" (click)="submitUpdate()">Submit</button>
+  <button class="btn btn-success" (click)="cancel()">Cancel</button>
 </mat-dialog-actions>
