@@ -8,10 +8,10 @@
   <div class="grid grid-pad">
     <div *ngFor="let wizard of (wizards| sortByName:whichSort)" class="col-1-3">
       <a *ngIf="house.id == wizard.house && (wizardPrefix==null || wizard.name.startsWith(wizardPrefix))">
-        <button mat-button (click)="openDialog(wizard)">Edit {{wizard.name}}</button>
+        <button mat-button (click)="openDialog(wizard)" class="edit-button">Edit {{wizard.name}}</button>
         <div class="module hero">
           <img class="image" src={{wizard.image}}>
-          <h4>{{wizard.name}}</h4>
+          <h4 class="wizard-name">{{wizard.name}}</h4>
         </div>
       </a>
     </div>

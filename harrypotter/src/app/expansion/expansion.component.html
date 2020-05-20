@@ -2,7 +2,7 @@
   <mat-expansion-panel *ngFor="let house of houses" (click)="onSelect(house)"
                        [class.selected]="house === selectedHouse">
     <mat-expansion-panel-header>
-      <mat-panel-title><span class="badge"><img class="image" src={{house.image}}></span><strong>{{house.name}}</strong>
+      <mat-panel-title><span class="badge"><img class="image" src={{house.image}}></span><strong class="house-name">{{house.name}}</strong>
       </mat-panel-title>
     </mat-expansion-panel-header>
 

@@ -8,16 +8,24 @@
 }
 
 .filter-pipe-input {
-  width: 16%;
-  margin-top: 4px;
+  width: 18%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
+  /*width: 16%;*/
+  /*margin-top: 4px;*/
+  /*border-radius: 4px;*/
 }
 
 .pipe-button {
-  width: 8%;
+  width: 9%;
   margin-left: 2px;
   margin-top: 0px;
-  font-family: Arial;
+  font-family: "Copperplate Gothic Light";
+  font-weight: bold;;
   background-color: #eee;
   border: none;
   padding: 2px 2px;
@@ -107,7 +115,6 @@ h4 {
 
 .module:hover {
   background-color: #eee;
-  cursor: pointer;
   color: #607d8b;
 }
 
@@ -143,3 +150,12 @@ Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 */
+
+.edit-button{
+  font-family: Papyrus;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.wizard-name{
+  font-family: "Copperplate Gothic Light";
+}
