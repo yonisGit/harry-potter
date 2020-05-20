@@ -1,6 +1,15 @@
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 
-constraints{
+constraints {
   width: 50%;
+}
 
+.end-buttons {
+  color: #313d2b;
+  background-color: #e0e0e0;
+}
+
+.end-buttons:hover {
+  color: #e0e0e0;
+  background-color: #313d2b;
 }

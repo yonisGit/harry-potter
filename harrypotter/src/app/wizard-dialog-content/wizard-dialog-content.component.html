@@ -15,11 +15,10 @@
     <div class="form-group">
       <label>Spells</label>
       <app-spells-edit [wizard]="passedWizard"></app-spells-edit>
-      <!--      <input type="text" class="form-control" value="{{wizard.spells}}" [(ngModel)]="spellString" required>-->
     </div>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button class="btn btn-success" (click)="submitUpdate()">Submit</button>
-  <button class="btn btn-success" (click)="cancel()">Cancel</button>
+  <button class="end-buttons" mat-button (click)="submitUpdate()">Submit</button>
+  <button class="end-buttons" mat-button (click)="cancel()">Cancel</button>
 </mat-dialog-actions>
