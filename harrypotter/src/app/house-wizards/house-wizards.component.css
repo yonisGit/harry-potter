@@ -7,22 +7,26 @@
   width: 160px;
 }
 
-.wizards .image.textForImage {
+.filter-pipe-input {
+  width: 16%;
+  margin-top: 4px;
+  border-radius: 4px;
 }
 
 .pipe-button {
-  width: 10%;
+  width: 8%;
+  margin-left: 2px;
   margin-top: 0px;
   font-family: Arial;
-  background-color: #a1b0ff;
+  background-color: #eee;
   border: none;
-  padding: 2px 5px;
+  padding: 2px 2px;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .pipe-button:hover {
-  background-color: #dcdcd0;
+  background-color: #cfd8dc;
 }
 
 .pipe-button:disabled {
