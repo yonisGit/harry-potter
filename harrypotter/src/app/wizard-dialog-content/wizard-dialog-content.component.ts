@@ -42,6 +42,6 @@ export class WizardDialogContentComponent implements OnInit {
   }
 
   cancel() {
-
+    this.dialogRef.close();
   }
 }
