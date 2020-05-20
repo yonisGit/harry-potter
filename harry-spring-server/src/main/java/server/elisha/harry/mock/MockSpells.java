@@ -20,4 +20,12 @@ public class MockSpells {
     public List<String> getSpells() {
         return spells;
     }
+
+    public void addSpell(String spell) {
+        spells.add(spell);
+    }
+
+    public void deleteSpells(String spell) {
+        spells.remove(spell);
+    }
 }

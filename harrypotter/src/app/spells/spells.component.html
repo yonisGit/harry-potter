@@ -1,6 +1,21 @@
-<ul class="spell-list">
+<!--<ul class="spell-list">-->
+<!--  <h1 class="bolding">Spell List</h1>-->
+<!--  <div *ngFor="let spell of spells">-->
+<!--    <li><h3>{{spell}}</h3></li>-->
+<!--  </div>-->
+<!--</ul>-->
+<mat-form-field class="example-chip-list">
   <h1 class="bolding">Spell List</h1>
-  <div *ngFor="let spell of spells">
-    <li><h3>{{spell}}</h3></li>
-  </div>
-</ul>
+  <mat-chip-list #chipList aria-label="Spell selection">
+    <mat-chip *ngFor="let spell of spells" [selectable]="selectable"
+              [removable]="removable" (removed)="remove(spell)">
+      {{spell}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+</mat-form-field>

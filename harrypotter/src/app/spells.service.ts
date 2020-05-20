@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Wizard} from './wizard';
 
@@ -11,14 +11,18 @@ export class SpellsService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  requestSpells = 'http://localhost:8080/harry-potter/spells';
+  requestSpells = 'http://localhost:8080/api/spells';
 
   getSpells(): Observable<string[]> {
     return this.http.get<string[]>(this.requestSpells);
   }
 
-  addSpell(spell: string): Observable<string> {
-    return this.http.post<string>(this.requestSpells, spell, this.httpOptions);
+  addSpell(spell: string) {
+    return this.http.post(this.requestSpells, spell, this.httpOptions);
+  }
+
+  deleteSpell(spell: string) {
+    return this.http.put(this.requestSpells, spell, this.httpOptions);
   }
 
   constructor(private http: HttpClient) {

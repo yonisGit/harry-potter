@@ -12,7 +12,7 @@ export class WizardService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  requestWizards = 'http://localhost:8080/harry-potter/wizards';
+  requestWizards = 'http://localhost:8080/api/wizards';
 
   getWizards(): Observable<Wizard[]> {
     return this.http.get<Wizard[]>(this.requestWizards);

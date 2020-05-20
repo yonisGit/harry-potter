@@ -11,7 +11,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path = "/harry-potter")
+@RequestMapping(path = "/api")
 public class Controller {
 
     final
@@ -34,6 +34,16 @@ public class Controller {
     @GetMapping(path = "/spells")
     public List<String> getSpells() {
         return mockSpells.getSpells();
+    }
+
+    @PutMapping(path = "/spells")
+    public void deleteSpells(@RequestBody String spell) {
+        mockSpells.deleteSpells(spell);
+    }
+
+    @PostMapping(path = "/spells")
+    public void addSpell(@RequestBody String spell) {
+        mockSpells.addSpell(spell);
     }
 
     @GetMapping(path = "/houses")

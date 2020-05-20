@@ -13,7 +13,7 @@ export class HouseService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  requestHouses = 'http://localhost:8080/harry-potter/houses';
+  requestHouses = 'http://localhost:8080/api/houses';
 
   getHouses(): Observable<House[]> {
     return this.http.get<House[]>(this.requestHouses);
