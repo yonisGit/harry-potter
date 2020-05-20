@@ -6,10 +6,19 @@ import {Wizard} from './wizard';
 })
 export class SortByNamePipe implements PipeTransform {
 
-  transform(wizardsUnsorted: Wizard[]): Wizard[] {
-    const wizardsSorted = wizardsUnsorted.sort((a, b) =>
-      a > b ? -1 : 1);
-    return wizardsSorted;
+  transform(wizardsUnsorted: Wizard[], whichSort: number): Wizard[] {
+    let wizardsSorted: Wizard[];
+    if (whichSort === 1) {
+      wizardsSorted = wizardsUnsorted.sort((a, b) =>
+        a.name > b.name ? 1 : -1);
+      return wizardsSorted;
+    } else if (whichSort === 2) {
+      wizardsSorted = wizardsUnsorted.sort((a, b) =>
+        a.age > b.age ? 1 : -1);
+      return wizardsSorted;
+    } else {
+      return wizardsUnsorted;
+    }
   }
 
 }

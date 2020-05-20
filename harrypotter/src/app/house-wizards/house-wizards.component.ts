@@ -14,6 +14,7 @@ export class HouseWizardsComponent implements OnInit {
   @Input() house: House;
   wizards: Wizard[];
   wizardPrefix: string;
+  whichSort: number;
 
   constructor(private wizardService: WizardService, public dialog: MatDialog) {
   }
@@ -41,6 +42,7 @@ export class HouseWizardsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.whichSort = 0;
     this.getWizards();
   }
 }
