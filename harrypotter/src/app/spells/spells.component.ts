@@ -3,6 +3,8 @@ import {SpellsService} from '../spells.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Spell} from '../spell';
+import {WizardService} from '../wizard.service';
+import {Wizard} from '../wizard';
 
 @Component({
   selector: 'app-spells',
@@ -13,7 +15,7 @@ export class SpellsComponent implements OnInit {
   spells: Spell[];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  constructor(private spellsService: SpellsService) {
+  constructor(private spellsService: SpellsService, private wizardService: WizardService) {
   }
 
   ngOnInit(): void {
@@ -24,9 +26,15 @@ export class SpellsComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    if ((value || '').trim()) { // todo: remove if not needed
-      const newSpell = this.generateSpellWithId(value.trim());
-      this.addSpell(newSpell);
+
+    if (value.trim()) { // todo: remove if not needed ----> DONE
+      const isSpellExistAlready = this.spells.filter(spell => spell.name === value).length > 0;
+      if (!isSpellExistAlready) {
+        const newSpell = this.generateSpellWithId(value.trim());
+        this.addSpell(newSpell);
+      } else {
+        alert('Spell is already exists!');
+      }
     }
 
     if (input) {
@@ -37,11 +45,6 @@ export class SpellsComponent implements OnInit {
   private generateSpellWithId(value: string) {
     return {id: this.spells.length, name: value};
   }
-
-  remove(spell: Spell): void { // todo: use deleteSpell instead
-    this.deleteSpell(spell);
-  }
-
 
   getSpells(): void {
     this.spellsService.getSpells().subscribe(
@@ -57,7 +60,27 @@ export class SpellsComponent implements OnInit {
 
   deleteSpell(spell: Spell): void {
     this.spellsService.deleteSpell(spell).subscribe(
-      () => this.spells.splice(this.spells.indexOf(spell), 1)
+      () => {
+        this.spells.splice(this.spells.indexOf(spell), 1);
+        this.wizardService.getWizards().subscribe(
+          (wizards) => this.deleteSpellFromWizards(wizards, spell)
+        );
+      }
     );
+  }
+
+  deleteSpellFromWizards(wizards: Wizard[], spell: Spell) {
+    wizards.map(wizard => {
+      const wizardSpells = wizard.spells;
+      const index = wizardSpells.indexOf(spell.name);
+      if (index >= 0) {
+        wizardSpells.splice(index, 1);
+        wizard.spells = wizardSpells;
+        this.wizardService.editWizard(wizard).subscribe(
+          () => { // todo: check what to do instead of this empty func
+          }
+        );
+      }
+    });
   }
 }

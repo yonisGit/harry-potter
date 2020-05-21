@@ -1,15 +1,18 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Wizard} from './wizard';
 import {Spell} from './spell';
+import {environment} from './../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpellsService {
 
-  requestSpells = 'http://localhost:8080/api/spells';
+  requestSpells = environment.serverUrl + '/api/spells';
+
+  constructor(private http: HttpClient) {
+  }
 
   getSpells(): Observable<Spell[]> {
     return this.http.get<Spell[]>(this.requestSpells);
@@ -21,8 +24,5 @@ export class SpellsService {
 
   deleteSpell(spell: Spell) {
     return this.http.delete(this.requestSpells + '/' + spell.id);
-  }
-
-  constructor(private http: HttpClient) {
   }
 }

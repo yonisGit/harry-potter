@@ -4,7 +4,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Wizard} from '../wizard';
 import {SpellsService} from '../spells.service';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
 import {Spell} from '../spell';
 
@@ -21,13 +21,22 @@ export class SpellsEditComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   myControl = new FormControl();
 
+  // todo: constructor always first and after it the ngOnInit.
+  constructor(private spellsService: SpellsService) {
+  }
+
+  ngOnInit() {
+    this.wizardSpells = [...this.wizard.spells];
+    this.getSpells();
+  }
+
   // todo: refactor function
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
     // Add our spell
-    if ((value || '').trim()) { // todo: remove trim and '' everywhere.
+    if (value.trim()) { // todo: remove trim and '' everywhere. ---> DONE
       const newSpell = {id: this.allSpells.findIndex(s => s.name === value), name: value};
       if (this.allSpells.includes(newSpell)) {
         if (!this.wizardSpells.includes(newSpell.name)) {
@@ -41,7 +50,6 @@ export class SpellsEditComponent implements OnInit {
       }
     }
 
-    // Reset the input value
     if (input) {
       input.value = '';
     }
@@ -56,10 +64,6 @@ export class SpellsEditComponent implements OnInit {
     }
   }
 
-  // todo: constructor always first and after it the ngOnInit.
-  constructor(private spellsService: SpellsService) {
-  }
-
   getSpells(): void {
     this.spellsService.getSpells().subscribe(
       spells => {
@@ -71,11 +75,6 @@ export class SpellsEditComponent implements OnInit {
         );
       }
     );
-  }
-
-  ngOnInit() {
-    this.wizardSpells = [...this.wizard.spells];
-    this.getSpells();
   }
 
   private _filter(value: string): string[] {
