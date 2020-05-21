@@ -10,11 +10,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 })
 export class SpellsComponent implements OnInit {
   spells: string[];
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  spellsToDelete: string[];
+  spellsToDelete: string[]; // todo: delete
   spellsToAdd: string[];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
@@ -22,18 +18,16 @@ export class SpellsComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
-    if ((value || '').trim()) {
-      // this.spells.push(value.trim());
+    if ((value || '').trim()) { // todo: remove if not needed
       this.addSpell(value.trim());
     }
-    // Reset the input value
+
     if (input) {
       input.value = '';
     }
   }
 
-  remove(spell: string): void {
+  remove(spell: string): void { // todo: use deleteSpell instead
     this.deleteSpell(spell);
   }
 

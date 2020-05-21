@@ -8,10 +8,9 @@ import {HouseService} from '../house.service';
   styleUrls: ['./expansion.component.css']
 })
 export class ExpansionComponent implements OnInit {
-  panelOpenState = false;
   houses: House[];
   selectedHouse: House;
-
+  // todo : change name of component to house-component.
   constructor(private houseService: HouseService) {
   }
 

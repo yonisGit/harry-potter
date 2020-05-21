@@ -4,5 +4,5 @@ export interface Wizard {
   age: number;
   image: string;
   spells: string[];
-  house: number;
+  house: number; // TODO: call it houseId
 }

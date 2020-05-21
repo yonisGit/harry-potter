@@ -21,19 +21,20 @@ export class WizardDialogContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.passedWizard = Object.create(this.wizard);
-    this.name = this.wizard.name;
-    this.age = this.wizard.age;
+    this.passedWizard = Object.create(this.wizard); // todo: change to {... this.wizard}
+    this.name = this.wizard.name; // todo: remove value from html
+    this.age = this.wizard.age; // todo: remove value from html
   }
 
-  submitUpdate() {
+  submitUpdate() { // todo: rename to saveWizard.
+    // todo: use passedWizard here and on the ngModel
     const newWizard = {
       id: this.passedWizard.id,
       name: this.name,
-      age: Number(this.age),
+      age: this.age,
       image: this.passedWizard.image,
       spells: this.passedWizard.spells,
-      house: Number(this.passedWizard.house)
+      house: this.passedWizard.house
     };
     const result = {old: this.wizard, wiz: newWizard};
     this.wizardService.editWizard(newWizard).subscribe(

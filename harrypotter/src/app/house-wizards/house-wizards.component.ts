@@ -13,10 +13,10 @@ import {WizardDialogContentComponent} from '../wizard-dialog-content/wizard-dial
 export class HouseWizardsComponent implements OnInit {
   @Input() house: House;
   wizards: Wizard[];
-  wizardPrefix: string;
-  whichSort: number;
+  wizardPrefix: string; // todo: rename to wizardFilterPrefix
+  whichSort: number; // todo: rename to sortField
 
-  constructor(private wizardService: WizardService, public dialog: MatDialog) {
+  constructor(private wizardService: WizardService, private dialog: MatDialog) {
   }
 
   openDialog(wizard: Wizard) {
@@ -25,12 +25,12 @@ export class HouseWizardsComponent implements OnInit {
     const dialogRef = this.dialog.open(WizardDialogContentComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       try {
-        if (result.old && result.wiz) {
+        if (result.old && result.wiz) { // todo: remove
           this.wizards.splice(this.wizards.findIndex(wiz => wiz === result.old), 1);
           this.wizards.push(result.wiz);
         }
       } catch (e) {
-        console.log('window closed by bad client...');
+        console.log('window closed by bad client...'); // todo: check if comes to this line
       }
       console.log(`Dialog result: ${result}`);
     });
