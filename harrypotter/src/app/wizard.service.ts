@@ -19,7 +19,7 @@ export class WizardService {
   }
 
   editWizard(wizard: Wizard){
-    return this.http.post(this.requestWizards, wizard, this.httpOptions);
+    return this.http.post(this.requestWizards, wizard, this.httpOptions); // TODO: CHECK IF WORKS WITHOUT HTTP_OPTIONS
   }
 
   constructor(private http: HttpClient) {

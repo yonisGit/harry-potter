@@ -21,6 +21,7 @@ export class SpellsService {
     return this.http.post(this.requestSpells, spell, this.httpOptions);
   }
 
+  // todo: make proper delete... not put.
   deleteSpell(spell: string) {
     return this.http.put(this.requestSpells, spell, this.httpOptions);
   }

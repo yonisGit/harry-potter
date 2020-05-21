@@ -9,6 +9,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./houses.component.css']
 })
 export class HousesComponent implements OnInit {
+  // todo : remove the logic from the expansion component and only left the selectedHouse in expansion.
   houses: House[];
   selectedHouse: House;
 

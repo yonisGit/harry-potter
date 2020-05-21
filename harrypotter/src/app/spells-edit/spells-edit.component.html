@@ -1,8 +1,8 @@
 <mat-chip-list #chipList aria-label="Spell selection">
-  <mat-chip *ngFor="let spell of spells" [selectable]="selectable"
-            [removable]="removable" (removed)="remove(spell)">
+  <mat-chip *ngFor="let spell of wizardSpells" [selectable]="true"
+            [removable]="true" (removed)="remove(spell)">
     {{spell}}
-    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    <mat-icon matChipRemove>cancel</mat-icon>
   </mat-chip>
   <mat-form-field>
     <input type="text"
@@ -10,13 +10,14 @@
            placeholder="Add new spell..."
            [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-           [matChipInputAddOnBlur]="addOnBlur"
+           [matChipInputAddOnBlur]="true"
            (matChipInputTokenEnd)="add($event)"
            matInput
            [formControl]="myControl"
            [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+<!--        todo: see if the '| async' above is needed-->
         {{option}}
       </mat-option>
     </mat-autocomplete>

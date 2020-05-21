@@ -7,10 +7,12 @@ import {Wizard} from './wizard';
 export class SortByNamePipe implements PipeTransform {
 
   transform(wizardsUnsorted: Wizard[], whichSort: number): Wizard[] {
-    let wizardsSorted: Wizard[];
+    // todo: the whichSort field will be a string indicating the property name (enum) .
+    let wizardsSorted: Wizard[]; // todo: dont need this
+    // todo: rename wizardsUnsorted to unsortedWizards
     if (whichSort === 1) {
       wizardsSorted = wizardsUnsorted.sort((a, b) =>
-        a.name > b.name ? 1 : -1);
+        a.name > b.name ? 1 : -1); // todo: rename a&b
       return wizardsSorted;
     } else if (whichSort === 2) {
       wizardsSorted = wizardsUnsorted.sort((a, b) =>
