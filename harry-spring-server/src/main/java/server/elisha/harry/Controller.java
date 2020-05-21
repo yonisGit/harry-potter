@@ -39,7 +39,6 @@ public class Controller {
 
     @DeleteMapping(path = "/spells/{id}")
     public void deleteSpell(@PathVariable String id) {
-        System.out.println("this is : " + id);
         mockSpells.deleteSpell(id);
     }
 
@@ -58,7 +57,7 @@ public class Controller {
         return mockWizards.getWizards();
     }
 
-    @PostMapping(path = "/wizards")
+    @PutMapping(path = "/wizards")
     public void editWizard(@RequestBody Wizard newWizard) {
         mockWizards.editWizard(newWizard);
     }
