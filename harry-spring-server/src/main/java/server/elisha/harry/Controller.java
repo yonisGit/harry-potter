@@ -2,6 +2,7 @@ package server.elisha.harry;
 
 import org.springframework.web.bind.annotation.*;
 import server.elisha.harry.entity.House;
+import server.elisha.harry.entity.Spell;
 import server.elisha.harry.entity.Wizard;
 import server.elisha.harry.mock.MockHouses;
 import server.elisha.harry.mock.MockSpells;
@@ -32,17 +33,18 @@ public class Controller {
     }
 
     @GetMapping(path = "/spells")
-    public List<String> getSpells() {
+    public List<Spell> getSpells() {
         return mockSpells.getSpells();
     }
 
-    @PutMapping(path = "/spells")
-    public void deleteSpells(@RequestBody String spell) {
-        mockSpells.deleteSpells(spell);
+    @DeleteMapping(path = "/spells/{id}")
+    public void deleteSpell(@PathVariable String id) {
+        System.out.println("this is : " + id);
+        mockSpells.deleteSpell(id);
     }
 
     @PostMapping(path = "/spells")
-    public void addSpell(@RequestBody String spell) {
+    public void addSpell(@RequestBody Spell spell) {
         mockSpells.addSpell(spell);
     }
 

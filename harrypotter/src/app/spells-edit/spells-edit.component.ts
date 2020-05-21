@@ -6,6 +6,7 @@ import {SpellsService} from '../spells.service';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
+import {Spell} from '../spell';
 
 @Component({
   selector: 'app-spells-edit',
@@ -16,7 +17,7 @@ export class SpellsEditComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   wizardSpells: string[];
   @Input() wizard: Wizard;
-  allSpells: string[];
+  allSpells: Spell[];
   filteredOptions: Observable<string[]>;
   myControl = new FormControl();
 
@@ -27,16 +28,16 @@ export class SpellsEditComponent implements OnInit {
 
     // Add our spell
     if ((value || '').trim()) { // todo: remove trim and '' everywhere.
-      const spellName = value.trim();
-      if (this.allSpells.includes(spellName)) {
-        if (!this.wizardSpells.includes(spellName)) {
-          this.wizardSpells.push(spellName);
+      const newSpell = {id: this.allSpells.findIndex(s => s.name === value), name: value};
+      if (this.allSpells.includes(newSpell)) {
+        if (!this.wizardSpells.includes(newSpell.name)) {
+          this.wizardSpells.push(newSpell.name);
           this.wizard.spells = this.wizardSpells;
         } else {
-          alert('The ' + spellName + ' spell is already exists! Sorry...');
+          alert('The ' + newSpell + ' spell is already exists! Sorry...');
         }
       } else {
-        alert('The ' + spellName + ' spell doesn\'t exist in the allowed spell list! Sorry...');
+        alert('The ' + newSpell + ' spell doesn\'t exist in the allowed spell list! Sorry...');
       }
     }
 
@@ -65,7 +66,7 @@ export class SpellsEditComponent implements OnInit {
         this.allSpells = spells;
         // in order for this to happen only after the above command
         this.filteredOptions = this.myControl.valueChanges.pipe(
-          startWith(''),
+          map(value => value.name),
           map(value => this._filter(value))
         );
       }
@@ -81,6 +82,7 @@ export class SpellsEditComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.allSpells
-      .filter(option => option.toLowerCase().startsWith(filterValue) && this.wizardSpells.includes(option));
+      .filter(option => option.name.toLowerCase().startsWith(filterValue) && this.wizardSpells.includes(option.name))
+      .map(spell => spell.name);
   }
 }

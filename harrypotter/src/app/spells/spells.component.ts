@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SpellsService} from '../spells.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import {Spell} from '../spell';
 
 @Component({
   selector: 'app-spells',
@@ -9,17 +10,23 @@ import {MatChipInputEvent} from '@angular/material/chips';
   styleUrls: ['./spells.component.css']
 })
 export class SpellsComponent implements OnInit {
-  spells: string[];
-  spellsToDelete: string[]; // todo: delete
-  spellsToAdd: string[];
+  spells: Spell[];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  constructor(private spellsService: SpellsService) {
+  }
+
+  ngOnInit(): void {
+    this.getSpells();
+  }
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
     if ((value || '').trim()) { // todo: remove if not needed
-      this.addSpell(value.trim());
+      const newSpell = this.generateSpellWithId(value.trim());
+      this.addSpell(newSpell);
     }
 
     if (input) {
@@ -27,12 +34,14 @@ export class SpellsComponent implements OnInit {
     }
   }
 
-  remove(spell: string): void { // todo: use deleteSpell instead
+  private generateSpellWithId(value: string) {
+    return {id: this.spells.length, name: value};
+  }
+
+  remove(spell: Spell): void { // todo: use deleteSpell instead
     this.deleteSpell(spell);
   }
 
-  constructor(private spellsService: SpellsService) {
-  }
 
   getSpells(): void {
     this.spellsService.getSpells().subscribe(
@@ -40,21 +49,15 @@ export class SpellsComponent implements OnInit {
     );
   }
 
-  addSpell(spell: string): void {
+  addSpell(spell: Spell): void {
     this.spellsService.addSpell(spell).subscribe(
       () => this.spells.push(spell)
     );
   }
 
-  deleteSpell(spell: string): void {
+  deleteSpell(spell: Spell): void {
     this.spellsService.deleteSpell(spell).subscribe(
       () => this.spells.splice(this.spells.indexOf(spell), 1)
     );
-  }
-
-  ngOnInit(): void {
-    this.spellsToAdd = [];
-    this.spellsToDelete = [];
-    this.getSpells();
   }
 }
