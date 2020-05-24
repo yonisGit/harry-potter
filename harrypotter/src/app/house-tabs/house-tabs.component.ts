@@ -3,15 +3,15 @@ import {House} from '../house';
 import {HouseService} from '../house.service';
 
 @Component({
-  selector: 'app-expansion',
-  templateUrl: './expansion.component.html',
-  styleUrls: ['./expansion.component.css']
+  selector: 'app-house-tabs',
+  templateUrl: './house-tabs.component.html',
+  styleUrls: ['./house-tabs.component.css']
 })
-export class ExpansionComponent implements OnInit {
+export class HouseTabsComponent implements OnInit {
   houses: House[];
   selectedHouse: House;
 
-  // todo : change name of component to house-component.
+  // todo : change name of component to house-component. ---> DONE
   constructor(private houseService: HouseService) {
   }
 
