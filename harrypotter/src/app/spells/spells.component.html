@@ -2,6 +2,7 @@
   <h1 class="bolding">Spell List</h1>
   <mat-chip-list #chipList aria-label="Spell selection">
     <mat-chip *ngFor="let spell of spells" [selectable]="true"
+              [contentEditable]="true"
               [removable]="true" (removed)="deleteSpell(spell)">
       {{spell.name}}
       <mat-icon matChipRemove>cancel</mat-icon>

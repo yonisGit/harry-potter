@@ -39,7 +39,7 @@ public class Controller {
     }
 
     @DeleteMapping(path = "/spells/{id}")
-    public void deleteSpell(@PathVariable String id) {
+    public void deleteSpell(@PathVariable int id) {
         mockSpells.deleteSpell(id);
     }
 
@@ -82,4 +82,8 @@ public class Controller {
         mockWizards.editWizard(wizard);
     }
 
+    @DeleteMapping(path = "/wizards/{id}")
+    public void deleteWizard(@PathVariable int id) {
+        mockWizards.deleteWizard(id);
+    }
 }

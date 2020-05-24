@@ -35,8 +35,8 @@ public class MockSpells {
         spells.add(spell);
     }
 
-    public void deleteSpell(String id) {
-        spells.removeIf(spell -> spell.getId() == Integer.parseInt(id));
+    public void deleteSpell(int id) {
+        spells.removeIf(spell -> spell.getId() == id);
     }
 
     public void deleteSpells(Spell spell) {
