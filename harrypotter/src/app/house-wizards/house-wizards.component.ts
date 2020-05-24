@@ -15,12 +15,15 @@ import {EditActions} from '../edit-actions';
 export class HouseWizardsComponent implements OnInit, OnChanges {
   @Input() house: House;
   wizards: Wizard[];
-  wizardNameString: string; // todo: rename to wizardFilterPrefix
-  sortField: PipeType; // todo: rename to sortField
+  wizardFilterString: string; // todo: rename to wizardFilterPrefix ----> DONE
+  sortField: PipeType; // todo: rename to sortField ---> DONE
 
   constructor(private wizardService: WizardService, private dialog: MatDialog) {
   }
 
+  ngOnInit(): void {
+  }
+  
   openDialog(wizard: Wizard) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = wizard;
@@ -49,9 +52,6 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
     if (this.house) {
       this.getWizardsByHouseId(this.house.id);
     }
-  }
-
-  ngOnInit(): void {
   }
 
   sortByName(acDec: number) {

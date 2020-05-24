@@ -13,6 +13,7 @@ export class WizardDialogContentComponent implements OnInit {
   spells: string[];
   @Input() wizard: Wizard;
   passedWizard: Wizard;
+  initialSpells: string[];
 
   constructor(public dialogRef: MatDialogRef<WizardDialogContentComponent>,
               @Inject(MAT_DIALOG_DATA) data, private wizardService: WizardService) {
@@ -20,6 +21,7 @@ export class WizardDialogContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initialSpells = this.wizard.spells;
     this.passedWizard = {...this.wizard}; // todo: change to {... this.wizard} ---> DONE
   }
 
@@ -39,6 +41,7 @@ export class WizardDialogContentComponent implements OnInit {
   }
 
   cancel() {
+    this.wizard.spells = this.initialSpells;
     this.dialogRef.close();
   }
 }

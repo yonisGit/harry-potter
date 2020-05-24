@@ -6,9 +6,6 @@ import server.elisha.harry.entity.Spell;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
-
-import static java.util.Objects.nonNull;
 
 @Service
 public class MockSpells {
@@ -31,8 +28,8 @@ public class MockSpells {
         return spells;
     }
 
-    public void addSpell(Spell spell) {
-        spells.add(spell);
+    public void addSpell(String spell) {
+        spells.add(new Spell(spells.size(), spell));
     }
 
     public void deleteSpell(int id) {
