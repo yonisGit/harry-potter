@@ -9,8 +9,8 @@ import {WizardService} from '../wizard.service';
   styleUrls: ['./wizard-dialog-content.component.css']
 })
 export class WizardDialogContentComponent implements OnInit {
-  name: string;
-  age: number;
+  // name: string;
+  // age: number;
   spells: string[];
   @Input() wizard: Wizard;
   passedWizard: Wizard;
@@ -21,24 +21,15 @@ export class WizardDialogContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.passedWizard = Object.create(this.wizard); // todo: change to {... this.wizard}
-    this.name = this.wizard.name; // todo: remove value from html
-    this.age = this.wizard.age; // todo: remove value from html
+    this.passedWizard = {... this.wizard}; // todo: change to {... this.wizard}
+    // this.name = this.wizard.name; // todo: remove value from html
+    // this.age = this.wizard.age; // todo: remove value from html
   }
 
-  submitUpdate() { // todo: rename to saveWizard.
+  saveWizard() {
     // todo: use passedWizard here and on the ngModel
-    const newWizard = {
-        id: this.passedWizard.id,
-        name: this.name,
-        age: this.age,
-        image: this.passedWizard.image,
-        spells: this.passedWizard.spells,
-        houseId: this.passedWizard.houseId
-      }
-    ;
-    this.wizardService.editWizard(newWizard).subscribe(
-      () => this.dialogRef.close(newWizard)
+    this.wizardService.editWizard(this.passedWizard).subscribe(
+      () => this.dialogRef.close(this.passedWizard)
     );
   }
 

@@ -37,12 +37,16 @@ public class MockWizards {
     }
 
     public void editWizard(Wizard newWizard) {
+        System.out.println("this: " + newWizard.getId() + ", " + newWizard.getName());
+        System.out.println("this: " + newWizard.getHouseId() + ", " + newWizard.getImage() + "," + newWizard.getSpells());
+        System.out.println("wizards: " + wizards.size());
+
         Wizard wizard = wizards.stream()
                 .filter(w -> w.getId() == newWizard.getId())
                 .collect(Collectors.toList())
                 .get(0);
-        wizards.set(wizards.indexOf(wizard),newWizard);
-        System.out.println("size: "+wizards.size());
+        wizards.set(wizards.indexOf(wizard), newWizard);
+        System.out.println("size: " + wizards.size());
     }
 
     public void addWizards(Wizard newWizard) {
