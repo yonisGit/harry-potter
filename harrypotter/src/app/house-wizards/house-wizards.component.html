@@ -1,23 +1,19 @@
 <div class="wizards" *ngIf="house">
-  <!--  todo: extract the button funcs to real funcs.-->
   <button class="pipe-button" mat-button (click)="sortByName(1)">Sort By Name</button>
   <button class="pipe-button" mat-button (click)="sortByName(-1)">Sort By Name Dec</button>
   <button class="pipe-button" mat-button (click)="sortByAge(1)">Sort By Age</button>
   <button class="pipe-button" mat-button (click)="sortByAge(-1)">Sort By Age Dec</button>
   <div>
-    <input class="filter-pipe-input" [(ngModel)]="wizardNameString" placeholder="Filter By Name...">
+    <input class="filter-pipe-input" [(ngModel)]="wizardFilterString" placeholder="Filter By Name...">
   </div>
 
   <div class="grid grid-pad">
-    <div *ngFor="let wizard of (wizards|sortOrFilter:sortField|wizardNameFilter:wizardNameString)" class="col-1-3">
-      <!--      todo: extract filter by name to pipe and put it in the ngFor line.-->
-      <!--      <a *ngIf="house.id == wizard.house && (wizardPrefix==null || wizard.name.startsWith(wizardPrefix))">-->
+    <div *ngFor="let wizard of (wizards|sortOrFilter:sortField|wizardNameFilter:wizardFilterString)" class="col-1-3">
       <button mat-button (click)="openDialog(wizard)" class="edit-button">Edit {{wizard.name}}</button>
       <div class="module hero">
         <img class="image" src={{wizard.image}}>
         <h4 class="wizard-name">{{wizard.name}}</h4>
       </div>
-      <!--      </a>-->
     </div>
   </div>
 </div>

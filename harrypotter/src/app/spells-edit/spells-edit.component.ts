@@ -1,12 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Wizard} from '../wizard';
 import {SpellsService} from '../spells.service';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, startWith} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
 import {Spell} from '../spell';
+import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-spells-edit',
@@ -20,6 +21,8 @@ export class SpellsEditComponent implements OnInit {
   allSpells: Spell[];
   filteredOptions: Observable<string[]>;
   myControl = new FormControl();
+  @ViewChild('spellInput') spellInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   // todo: constructor always first and after it the ngOnInit.
   constructor(private spellsService: SpellsService) {
@@ -37,16 +40,16 @@ export class SpellsEditComponent implements OnInit {
 
     // Add our spell
     if (value.trim()) { // todo: remove trim and '' everywhere. ---> DONE
-      const newSpell = {id: this.allSpells.findIndex(s => s.name === value), name: value};
-      if (this.allSpells.includes(newSpell)) {
+      const newSpell = {id: this.allSpells.findIndex(s => s.name === value), name: value.trim()};
+      if (this.allSpells.map(s => s.name).includes(newSpell.name)) {
         if (!this.wizardSpells.includes(newSpell.name)) {
           this.wizardSpells.push(newSpell.name);
           this.wizard.spells = this.wizardSpells;
         } else {
-          alert('The ' + newSpell + ' spell is already exists! Sorry...');
+          alert('The ' + newSpell.name + ' spell is already exists for this wizard! Sorry...');
         }
       } else {
-        alert('The ' + newSpell + ' spell doesn\'t exist in the allowed spell list! Sorry...');
+        alert('The ' + newSpell.name + ' spell doesn\'t exist in the allowed spell list! Sorry...');
       }
     }
 
@@ -83,5 +86,11 @@ export class SpellsEditComponent implements OnInit {
     return this.allSpells
       .filter(option => option.name.toLowerCase().startsWith(filterValue) && this.wizardSpells.includes(option.name))
       .map(spell => spell.name);
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.wizardSpells.push(event.option.viewValue);
+    this.spellInput.nativeElement.value = '';
+    this.myControl.setValue(null);
   }
 }
