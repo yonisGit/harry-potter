@@ -7,7 +7,7 @@ import {PipeType} from './pipe-type';
 })
 export class SortOrFilterPipe implements PipeTransform {
 
-  transform(unsortedWizards: Wizard[], sortType: PipeType): any {
+  transform(unsortedWizards: Wizard[], sortType: PipeType): Wizard[] {
     if (sortType === PipeType.Sort_Name) {
       return unsortedWizards.sort((wizard1, wizard2) =>
         wizard1.name > wizard2.name ? 1 : -1);

@@ -14,7 +14,7 @@ import {PipeType} from '../pipe-type';
 export class HouseWizardsComponent implements OnInit, OnChanges {
   @Input() house: House;
   wizards: Wizard[];
-  wizardPrefix: string; // todo: rename to wizardFilterPrefix
+  wizardNameString: string; // todo: rename to wizardFilterPrefix
   pipeKind: PipeType; // todo: rename to sortField
 
   constructor(private wizardService: WizardService, private dialog: MatDialog) {

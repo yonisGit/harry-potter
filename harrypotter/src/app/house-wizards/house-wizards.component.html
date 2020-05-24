@@ -3,12 +3,11 @@
   <button class="pipe-button" mat-button (click)="sortByName(1)">Sort By Name</button>
   <button class="pipe-button" mat-button (click)="sortByAge(1)">Sort By Age</button>
   <div>
-    <input class="filter-pipe-input" [(ngModel)]="wizardPrefix" placeholder="Filter By Name...">
+    <input class="filter-pipe-input" [(ngModel)]="wizardNameString" placeholder="Filter By Name...">
   </div>
 
   <div class="grid grid-pad">
-    <!--    <div *ngFor="let wizard of (wizards| sortOrFilter:whichSort)" class="col-1-3">-->
-    <div *ngFor="let wizard of (wizards|sortOrFilter:pipeKind)" class="col-1-3">
+    <div *ngFor="let wizard of (wizards|sortOrFilter:pipeKind|wizardNameFilter:wizardNameString)" class="col-1-3">
       <!--      todo: extract filter by name to pipe and put it in the ngFor line.-->
       <!--      <a *ngIf="house.id == wizard.house && (wizardPrefix==null || wizard.name.startsWith(wizardPrefix))">-->
       <button mat-button (click)="openDialog(wizard)" class="edit-button">Edit {{wizard.name}}</button>

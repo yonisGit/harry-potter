@@ -52,6 +52,7 @@ import {WizardDialogContentComponent} from './wizard-dialog-content/wizard-dialo
 import { SpellsComponent } from './spells/spells.component';
 import { SpellsEditComponent } from './spells-edit/spells-edit.component';
 import { SortOrFilterPipe } from './sort-by-name.pipe';
+import { WizardNameFilterPipe } from './wizard-name-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SortOrFilterPipe } from './sort-by-name.pipe';
     SpellsComponent,
     SpellsEditComponent,
     SortOrFilterPipe,
+    WizardNameFilterPipe,
   ],
   imports: [
     BrowserModule,
