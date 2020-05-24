@@ -9,6 +9,7 @@ import server.elisha.harry.mock.MockSpells;
 import server.elisha.harry.mock.MockWizards;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin
 @RestController
@@ -60,6 +61,15 @@ public class Controller {
     @GetMapping(path = "/wizards")
     public List<Wizard> getWizards() {
         return mockWizards.getWizards();
+    }
+
+    @GetMapping(path = "/wizards/{houseId}")
+    public List<Wizard> getWizards(@PathVariable int houseId) {
+        return mockWizards
+                .getWizards()
+                .stream()
+                .filter(w -> w.getHouseId() == houseId)
+                .collect(Collectors.toList());
     }
 
     @PostMapping(path = "/wizards")

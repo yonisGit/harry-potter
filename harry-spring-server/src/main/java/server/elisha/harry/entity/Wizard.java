@@ -13,5 +13,5 @@ public class Wizard {
     int age;
     String image;
     List spells;
-    int house;
+    int houseId;
 }
