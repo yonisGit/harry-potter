@@ -42,6 +42,11 @@ public class Controller {
         mockSpells.deleteSpell(id);
     }
 
+    @PutMapping(path = "/spells")
+    public void editSpell(@RequestBody Spell spell) {
+        mockSpells.editSpell(spell);
+    }
+
     @PostMapping(path = "/spells")
     public void addSpell(@RequestBody Spell spell) {
         mockSpells.addSpell(spell);
@@ -57,9 +62,14 @@ public class Controller {
         return mockWizards.getWizards();
     }
 
+    @PostMapping(path = "/wizards")
+    public void addWizard(@RequestBody Wizard newWizard) {
+        mockWizards.addWizards(newWizard);
+    }
+
     @PutMapping(path = "/wizards")
-    public void editWizard(@RequestBody Wizard newWizard) {
-        mockWizards.editWizard(newWizard);
+    public void editWizard(@RequestBody Wizard wizard) {
+        mockWizards.editWizard(wizard);
     }
 
 }
