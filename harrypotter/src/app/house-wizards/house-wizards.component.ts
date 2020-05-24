@@ -1,11 +1,11 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {House} from '../house';
-import {Wizard} from '../wizard';
-import {WizardService} from '../wizard.service';
+import {House} from '../entities/house';
+import {Wizard} from '../entities/wizard';
+import {WizardService} from '../services/wizard.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {WizardDialogContentComponent} from '../wizard-dialog-content/wizard-dialog-content.component';
-import {PipeType} from '../pipe-type';
-import {EditActions} from '../edit-actions';
+import {PipeType} from '../entities/pipe-type';
+import {EditActions} from '../entities/edit-actions';
 
 @Component({
   selector: 'app-house-wizards',
@@ -23,7 +23,7 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
   }
-  
+
   openDialog(wizard: Wizard) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = wizard;

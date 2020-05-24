@@ -1,12 +1,12 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Wizard} from '../wizard';
-import {SpellsService} from '../spells.service';
+import {Wizard} from '../entities/wizard';
+import {SpellsService} from '../services/spells.service';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
-import {Spell} from '../spell';
+import {Spell} from '../entities/spell';
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 
 @Component({

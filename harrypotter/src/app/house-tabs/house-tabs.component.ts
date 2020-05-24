@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {House} from '../house';
-import {HouseService} from '../house.service';
+import {House} from '../entities/house';
+import {HouseService} from '../services/house.service';
 
 @Component({
   selector: 'app-house-tabs',

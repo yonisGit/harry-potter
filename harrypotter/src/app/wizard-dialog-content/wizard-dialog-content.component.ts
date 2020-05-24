@@ -1,8 +1,8 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {Wizard} from '../wizard';
-import {WizardService} from '../wizard.service';
-import {EditActions} from '../edit-actions';
+import {Wizard} from '../entities/wizard';
+import {WizardService} from '../services/wizard.service';
+import {EditActions} from '../entities/edit-actions';
 
 @Component({
   selector: 'app-wizard-dialog-content',
