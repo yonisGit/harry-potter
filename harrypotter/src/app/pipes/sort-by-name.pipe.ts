@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Wizard} from './wizard';
-import {PipeType} from './pipe-type';
+import {Wizard} from '../entities/wizard';
+import {PipeType} from '../entities/pipe-type';
 
 @Pipe({
   name: 'sortOrFilter'

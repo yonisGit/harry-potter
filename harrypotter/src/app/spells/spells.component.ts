@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {SpellsService} from '../spells.service';
+import {SpellsService} from '../services/spells.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
-import {Spell} from '../spell';
-import {WizardService} from '../wizard.service';
-import {Wizard} from '../wizard';
+import {Spell} from '../entities/spell';
+import {WizardService} from '../services/wizard.service';
+import {Wizard} from '../entities/wizard';
 import {MatChipTextControl} from '@angular/material/chips/chip-text-control';
 
 @Component({

@@ -51,8 +51,8 @@ import {HouseTabsComponent} from './house-tabs/house-tabs.component';
 import {WizardDialogContentComponent} from './wizard-dialog-content/wizard-dialog-content.component';
 import { SpellsComponent } from './spells/spells.component';
 import { SpellsEditComponent } from './spells-edit/spells-edit.component';
-import { SortOrFilterPipe } from './sort-by-name.pipe';
-import { WizardNameFilterPipe } from './wizard-name-filter.pipe';
+import { SortOrFilterPipe } from './pipes/sort-by-name.pipe';
+import { WizardNameFilterPipe } from './pipes/wizard-name-filter.pipe';
 
 @NgModule({
   declarations: [

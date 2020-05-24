@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Wizard} from './wizard';
+import {Wizard} from '../entities/wizard';
 
 @Pipe({
   name: 'wizardNameFilter'
@@ -15,3 +15,4 @@ export class WizardNameFilterPipe implements PipeTransform {
   }
 
 }
+
