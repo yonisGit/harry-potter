@@ -25,15 +25,19 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
     dialogConfig.data = wizard;
     const dialogRef = this.dialog.open(WizardDialogContentComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
-      try {
-        if (result.old && result.wiz) { // todo: remove
-          this.wizards.splice(this.wizards.findIndex(wiz => wiz === result.old), 1);
-          this.wizards.push(result.wiz);
-        }
-      } catch (e) {
-        console.log('window closed by bad client...'); // todo: check if comes to this line
+      if (result.id) {
+        const wizId = this.wizards.findIndex(w => w.id === result.id);
+        this.wizards[wizId] = result;
       }
-      console.log(`Dialog result: ${result}`);
+      // try {
+      //   if (result.old && result.wiz) { // todo: remove
+      //     this.wizards.splice(this.wizards.findIndex(wiz => wiz === result.old), 1);
+      //     this.wizards.push(result.wiz);
+      //   }
+      // } catch (e) {
+      //   console.log('window closed by bad client...'); // todo: check if comes to this line
+      // }
+      // console.log(`Dialog result: ${result}`);
     });
   }
 

@@ -29,16 +29,16 @@ export class WizardDialogContentComponent implements OnInit {
   submitUpdate() { // todo: rename to saveWizard.
     // todo: use passedWizard here and on the ngModel
     const newWizard = {
-      id: this.passedWizard.id,
-      name: this.name,
-      age: this.age,
-      image: this.passedWizard.image,
-      spells: this.passedWizard.spells,
-      house: this.passedWizard.house
-    };
-    const result = {old: this.wizard, wiz: newWizard};
+        id: this.passedWizard.id,
+        name: this.name,
+        age: this.age,
+        image: this.passedWizard.image,
+        spells: this.passedWizard.spells,
+        houseId: this.passedWizard.houseId
+      }
+    ;
     this.wizardService.editWizard(newWizard).subscribe(
-      () => this.dialogRef.close(result)
+      () => this.dialogRef.close(newWizard)
     );
   }
 

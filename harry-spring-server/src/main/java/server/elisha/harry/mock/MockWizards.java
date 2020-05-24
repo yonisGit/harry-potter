@@ -6,6 +6,7 @@ import server.elisha.harry.entity.Wizard;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MockWizards {
@@ -36,8 +37,12 @@ public class MockWizards {
     }
 
     public void editWizard(Wizard newWizard) {
-        wizards.removeIf(wizard -> wizard.getId() == newWizard.getId());
-        wizards.add(newWizard);
+        Wizard wizard = wizards.stream()
+                .filter(w -> w.getId() == newWizard.getId())
+                .collect(Collectors.toList())
+                .get(0);
+        wizards.set(wizards.indexOf(wizard),newWizard);
+        System.out.println("size: "+wizards.size());
     }
 
     public void addWizards(Wizard newWizard) {
