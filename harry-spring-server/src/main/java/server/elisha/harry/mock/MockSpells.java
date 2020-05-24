@@ -42,4 +42,9 @@ public class MockSpells {
     public void deleteSpells(Spell spell) {
         spells.remove(spell);
     }
+
+    public void editSpell(Spell newSpell) {
+        spells.removeIf(spell -> spell.getId() == newSpell.getId());
+        spells.add(newSpell);
+    }
 }

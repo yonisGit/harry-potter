@@ -40,4 +40,7 @@ public class MockWizards {
         wizards.add(newWizard);
     }
 
+    public void addWizards(Wizard newWizard) {
+        wizards.add(newWizard);
+    }
 }
