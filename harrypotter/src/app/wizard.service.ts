@@ -18,6 +18,10 @@ export class WizardService {
     return this.http.get<Wizard[]>(this.requestWizards);
   }
 
+  getWizardsByHouseId(houseId: number): Observable<Wizard[]> {
+    return this.http.get<Wizard[]>(this.requestWizards + '/' + houseId);
+  }
+
   editWizard(wizard: Wizard) {
     return this.http.put(this.requestWizards, wizard); // TODO: CHECK IF WORKS WITHOUT HTTP_OPTIONS
   }
