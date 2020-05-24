@@ -43,4 +43,8 @@ public class MockWizards {
     public void addWizards(Wizard newWizard) {
         wizards.add(newWizard);
     }
+
+    public void deleteWizard(int wizardId) {
+        wizards.removeIf(wizard -> wizard.getId() == wizardId);
+    }
 }
