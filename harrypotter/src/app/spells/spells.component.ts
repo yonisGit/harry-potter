@@ -27,7 +27,6 @@ export class SpellsComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-
     if (value.trim()) { // todo: remove if not needed ----> DONE
       const isSpellExistAlready = this.spells.filter(spell => spell.name === value).length > 0;
       if (!isSpellExistAlready) {

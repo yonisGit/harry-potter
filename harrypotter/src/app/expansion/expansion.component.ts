@@ -10,6 +10,7 @@ import {HouseService} from '../house.service';
 export class ExpansionComponent implements OnInit {
   houses: House[];
   selectedHouse: House;
+
   // todo : change name of component to house-component.
   constructor(private houseService: HouseService) {
   }
@@ -27,5 +28,4 @@ export class ExpansionComponent implements OnInit {
   onSelect(house: House) {
     this.selectedHouse = house;
   }
-
 }

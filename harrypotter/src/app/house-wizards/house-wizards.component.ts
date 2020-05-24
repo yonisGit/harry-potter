@@ -16,7 +16,7 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
   @Input() house: House;
   wizards: Wizard[];
   wizardNameString: string; // todo: rename to wizardFilterPrefix
-  pipeKind: PipeType; // todo: rename to sortField
+  sortField: PipeType; // todo: rename to sortField
 
   constructor(private wizardService: WizardService, private dialog: MatDialog) {
   }
@@ -26,24 +26,17 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
     dialogConfig.data = wizard;
     const dialogRef = this.dialog.open(WizardDialogContentComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
-      if (result.wizard.id && result.action) {
+      try {
         if (result.action === EditActions.EDIT) {
           const wizId = this.wizards.findIndex(w => w.id === result.wizard.id);
-          this.wizards[wizId] = result;
+          this.wizards[wizId] = result.wizard;
         } else if (result.action === EditActions.DELETE) {
           const index = this.wizards.findIndex(w => w.id === result.wizard.id);
           this.wizards.splice(index, 1);
         }
+      } catch (e) {
+        console.log('Client closed the window sloppily...'); // todo: check if comes to this line ---> DONE : comes to this!
       }
-      // try {
-      //   if (result.old && result.wiz) { // todo: remove
-      //     this.wizards.splice(this.wizards.findIndex(wiz => wiz === result.old), 1);
-      //     this.wizards.push(result.wiz);
-      //   }
-      // } catch (e) {
-      //   console.log('window closed by bad client...'); // todo: check if comes to this line
-      // }
-      // console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -63,21 +56,17 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
 
   sortByName(acDec: number) {
     if (acDec === 1) {
-      this.pipeKind = PipeType.Sort_Name;
+      this.sortField = PipeType.Sort_Name;
     } else {
-      this.pipeKind = PipeType.Sort_Name_Dec;
+      this.sortField = PipeType.Sort_Name_Dec;
     }
   }
 
   sortByAge(acDec: number) {
     if (acDec === 1) {
-      this.pipeKind = PipeType.Sort_Age;
+      this.sortField = PipeType.Sort_Age;
     } else {
-      this.pipeKind = PipeType.Sort_Age_Dec;
+      this.sortField = PipeType.Sort_Age_Dec;
     }
-  }
-
-  filterByName() {
-    this.pipeKind = PipeType.Filter_Name;
   }
 }
