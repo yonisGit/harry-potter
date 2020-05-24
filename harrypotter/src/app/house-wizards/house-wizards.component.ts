@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Inject} from '@angular/core';
+import {Component, OnInit, Input, Inject, OnChanges} from '@angular/core';
 import {House} from '../house';
 import {Wizard} from '../wizard';
 import {WizardService} from '../wizard.service';
@@ -10,7 +10,7 @@ import {WizardDialogContentComponent} from '../wizard-dialog-content/wizard-dial
   templateUrl: './house-wizards.component.html',
   styleUrls: ['./house-wizards.component.css']
 })
-export class HouseWizardsComponent implements OnInit {
+export class HouseWizardsComponent implements OnInit, OnChanges {
   @Input() house: House;
   wizards: Wizard[];
   wizardPrefix: string; // todo: rename to wizardFilterPrefix
@@ -41,8 +41,19 @@ export class HouseWizardsComponent implements OnInit {
       .subscribe(wizards => this.wizards = wizards);
   }
 
+  getWizardsByHouseId(houseId: number): void {
+    this.wizardService.getWizardsByHouseId(houseId)
+      .subscribe(wizards => this.wizards = wizards);
+  }
+
+  ngOnChanges(): void {
+    if (this.house) {
+      this.getWizardsByHouseId(this.house.id);
+    }
+  }
+
   ngOnInit(): void {
-    this.whichSort = 0;
-    this.getWizards();
+    // this.whichSort = 0;
+    // this.getWizards();
   }
 }
