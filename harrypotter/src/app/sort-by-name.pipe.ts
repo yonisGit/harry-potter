@@ -7,11 +7,11 @@ import {PipeType} from './pipe-type';
 })
 export class SortOrFilterPipe implements PipeTransform {
 
-  transform(wizards: Wizard[], sortType: PipeType): any {
+  transform1(wizards: Wizard[], sortType: PipeType): any {
 
   }
 
-  transform1(wizardsUnsorted: Wizard[], whichSort: number): Wizard[] {
+  transform(wizardsUnsorted: Wizard[], whichSort: number): Wizard[] {
     // todo: the whichSort field will be a string indicating the property name (enum) .
     let wizardsSorted: Wizard[]; // todo: dont need this
     // todo: rename wizardsUnsorted to unsortedWizards
