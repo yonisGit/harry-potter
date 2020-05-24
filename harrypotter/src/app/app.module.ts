@@ -47,7 +47,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSliderModule} from '@angular/material/slider';
-import {ExpansionComponent} from './expansion/expansion.component';
+import {HouseTabsComponent} from './house-tabs/house-tabs.component';
 import {WizardDialogContentComponent} from './wizard-dialog-content/wizard-dialog-content.component';
 import { SpellsComponent } from './spells/spells.component';
 import { SpellsEditComponent } from './spells-edit/spells-edit.component';
@@ -60,7 +60,7 @@ import { WizardNameFilterPipe } from './wizard-name-filter.pipe';
     HousesComponent,
     HouseWizardsComponent,
     NavigateComponent,
-    ExpansionComponent,
+    HouseTabsComponent,
     WizardDialogContentComponent,
     SpellsComponent,
     SpellsEditComponent,
