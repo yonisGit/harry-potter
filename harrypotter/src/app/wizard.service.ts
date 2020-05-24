@@ -19,11 +19,15 @@ export class WizardService {
   }
 
   getWizardsByHouseId(houseId: number): Observable<Wizard[]> {
-    return  this.http.get<Wizard[]>(this.requestWizards + '/' + houseId);
+    return this.http.get<Wizard[]>(this.requestWizards + '/' + houseId);
   }
 
   editWizard(wizard: Wizard) {
     return this.http.put(this.requestWizards, wizard);
+  }
+
+  deleteWizard(wizard: Wizard) {
+    return this.http.delete(this.requestWizards + '/' + wizard.id);
   }
 
 

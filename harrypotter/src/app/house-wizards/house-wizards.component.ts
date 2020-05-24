@@ -5,6 +5,7 @@ import {WizardService} from '../wizard.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {WizardDialogContentComponent} from '../wizard-dialog-content/wizard-dialog-content.component';
 import {PipeType} from '../pipe-type';
+import {EditActions} from '../edit-actions';
 
 @Component({
   selector: 'app-house-wizards',
@@ -25,9 +26,14 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
     dialogConfig.data = wizard;
     const dialogRef = this.dialog.open(WizardDialogContentComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
-      if (result.id) {
-        const wizId = this.wizards.findIndex(w => w.id === result.id);
-        this.wizards[wizId] = result;
+      if (result.wizard.id && result.action) {
+        if (result.action === EditActions.EDIT) {
+          const wizId = this.wizards.findIndex(w => w.id === result.wizard.id);
+          this.wizards[wizId] = result;
+        } else if (result.action === EditActions.DELETE) {
+          const index = this.wizards.findIndex(w => w.id === result.wizard.id);
+          this.wizards.splice(index, 1);
+        }
       }
       // try {
       //   if (result.old && result.wiz) { // todo: remove
