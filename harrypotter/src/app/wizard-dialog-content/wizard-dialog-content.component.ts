@@ -2,6 +2,7 @@ import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Wizard} from '../wizard';
 import {WizardService} from '../wizard.service';
+import {EditActions} from '../edit-actions';
 
 @Component({
   selector: 'app-wizard-dialog-content',
@@ -9,8 +10,6 @@ import {WizardService} from '../wizard.service';
   styleUrls: ['./wizard-dialog-content.component.css']
 })
 export class WizardDialogContentComponent implements OnInit {
-  // name: string;
-  // age: number;
   spells: string[];
   @Input() wizard: Wizard;
   passedWizard: Wizard;
@@ -21,15 +20,21 @@ export class WizardDialogContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.passedWizard = {... this.wizard}; // todo: change to {... this.wizard}
-    // this.name = this.wizard.name; // todo: remove value from html
-    // this.age = this.wizard.age; // todo: remove value from html
+    this.passedWizard = {...this.wizard}; // todo: change to {... this.wizard} ---> DONE
   }
 
   saveWizard() {
-    // todo: use passedWizard here and on the ngModel
+    // todo: use passedWizard here and on the ngModel ---> DONE
     this.wizardService.editWizard(this.passedWizard).subscribe(
-      () => this.dialogRef.close(this.passedWizard)
+      () => this.dialogRef.close({wizard: this.passedWizard, action: EditActions.EDIT})
+    );
+  }
+
+  deleteWizard() {
+    this.wizardService.deleteWizard(this.passedWizard).subscribe(
+      () => {
+        this.dialogRef.close({wizard: this.passedWizard, action: EditActions.DELETE});
+      }
     );
   }
 
