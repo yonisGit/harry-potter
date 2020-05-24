@@ -1,9 +1,10 @@
-import {Component, OnInit, Input, Inject, OnChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {House} from '../house';
 import {Wizard} from '../wizard';
 import {WizardService} from '../wizard.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {WizardDialogContentComponent} from '../wizard-dialog-content/wizard-dialog-content.component';
+import {PipeType} from '../pipe-type';
 
 @Component({
   selector: 'app-house-wizards',
@@ -14,7 +15,7 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
   @Input() house: House;
   wizards: Wizard[];
   wizardPrefix: string; // todo: rename to wizardFilterPrefix
-  whichSort: number; // todo: rename to sortField
+  pipeKind: PipeType; // todo: rename to sortField
 
   constructor(private wizardService: WizardService, private dialog: MatDialog) {
   }
@@ -36,11 +37,6 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
     });
   }
 
-  getWizards(): void {
-    this.wizardService.getWizards()
-      .subscribe(wizards => this.wizards = wizards);
-  }
-
   getWizardsByHouseId(houseId: number): void {
     this.wizardService.getWizardsByHouseId(houseId)
       .subscribe(wizards => this.wizards = wizards);
@@ -53,7 +49,25 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    // this.whichSort = 0;
-    // this.getWizards();
+  }
+
+  sortByName(acDec: number) {
+    if (acDec === 1) {
+      this.pipeKind = PipeType.Sort_Name;
+    } else {
+      this.pipeKind = PipeType.Sort_Name_Dec;
+    }
+  }
+
+  sortByAge(acDec: number) {
+    if (acDec === 1) {
+      this.pipeKind = PipeType.Sort_Age;
+    } else {
+      this.pipeKind = PipeType.Sort_Age_Dec;
+    }
+  }
+
+  filterByName() {
+    this.pipeKind = PipeType.Filter_Name;
   }
 }
