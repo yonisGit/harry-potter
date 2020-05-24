@@ -1,7 +1,9 @@
 <div class="wizards" *ngIf="house">
   <!--  todo: extract the button funcs to real funcs.-->
   <button class="pipe-button" mat-button (click)="sortByName(1)">Sort By Name</button>
+  <button class="pipe-button" mat-button (click)="sortByName(-1)">Sort By Name Dec</button>
   <button class="pipe-button" mat-button (click)="sortByAge(1)">Sort By Age</button>
+  <button class="pipe-button" mat-button (click)="sortByAge(-1)">Sort By Age Dec</button>
   <div>
     <input class="filter-pipe-input" [(ngModel)]="wizardNameString" placeholder="Filter By Name...">
   </div>
