@@ -28,8 +28,8 @@ public class MockSpells {
         return spells;
     }
 
-    public void addSpell(String spell) {
-        spells.add(new Spell(spells.size(), spell));
+    public void addSpell(Spell spell) {
+        spells.add(spell);
     }
 
     public void deleteSpell(int id) {

@@ -30,6 +30,7 @@ export class SpellsComponent implements OnInit {
       const isSpellExistAlready = this.spells.filter(spell => spell.name === value).length > 0;
       if (!isSpellExistAlready) {
         const newSpell = this.generateSpellWithId(value.trim());
+        console.log('full spell is:' + newSpell);
         this.addSpell(newSpell);
       } else {
         alert('Spell is already exists!');

@@ -49,7 +49,7 @@ public class Controller {
     }
 
     @PostMapping(path = "/spells")
-    public void addSpell(@RequestBody String spell) {
+    public void addSpell(@RequestBody Spell spell) {
         mockSpells.addSpell(spell);
     }
 
