@@ -13,11 +13,12 @@
            [matChipInputAddOnBlur]="true"
            (matChipInputTokenEnd)="add($event)"
            matInput
-           [formControl]="myControl"
+           [formControl]="spellControl"
            [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option}}
+      <mat-option *ngFor="let spellOption of spellsOptions | async" [value]="spellOption">
+<!--        todo: check if works without the async -&ndash;&gt; DONE : doesnt work without-->
+        {{spellOption}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>

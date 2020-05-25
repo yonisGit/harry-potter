@@ -19,8 +19,8 @@ export class SpellsEditComponent implements OnInit {
   wizardSpells: string[];
   @Input() wizard: Wizard;
   allSpells: Spell[];
-  filteredOptions: Observable<string[]>;
-  myControl = new FormControl();
+  spellsOptions: Observable<string[]>;
+  spellControl = new FormControl();
   @ViewChild('spellInput') spellInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
@@ -81,7 +81,7 @@ export class SpellsEditComponent implements OnInit {
       spells => {
         this.allSpells = spells;
         // in order for this to happen only after the above command
-        this.filteredOptions = this.myControl.valueChanges.pipe(
+        this.spellsOptions = this.spellControl.valueChanges.pipe(
           startWith(''),
           map(value => this._filter(value))
         );
@@ -95,11 +95,5 @@ export class SpellsEditComponent implements OnInit {
     return this.allSpells
       .filter(option => option.name.toLowerCase().startsWith(filterValue) && !this.wizardSpells.includes(option.name))
       .map(spell => spell.name);
-  }
-
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.wizardSpells.push(event.option.viewValue);
-    this.spellInput.nativeElement.value = '';
-    this.myControl.setValue(null);
   }
 }
