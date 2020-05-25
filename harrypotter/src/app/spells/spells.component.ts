@@ -88,10 +88,8 @@ export class SpellsComponent implements OnInit {
       if (index >= 0) {
         wizardSpells.splice(index, 1);
         wizard.spells = wizardSpells;
-        this.wizardService.editWizard(wizard).subscribe(
-          () => { // todo: check what to do instead of this empty func
-          }
-        );
+        this.wizardService.editWizard(wizard).subscribe(() => {
+        }); // todo: check what to do instead of this empty func
       }
     });
   }
