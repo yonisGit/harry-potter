@@ -44,6 +44,28 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
     });
   }
 
+  openAddWizardDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      id: this.wizards.length * 1000 * this.house.id + 1,
+      name: '',
+      age: 0,
+      image: '../assets/wizard_images/gryffindor/harry.jpg',
+      spells: [],
+      houseId: this.house.id
+    };
+    const dialogRef = this.dialog.open(WizardAddDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      try {
+        if (result.action === EditActions.ADD) {
+          this.wizards.push(result.wizard);
+        }
+      } catch (e) {
+        console.log('Client closed the window sloppily...'); // todo: check if comes to this line ---> DONE : comes to this!
+      }
+    });
+  }
+
   getWizardsByHouseId(houseId: number): void {
     this.wizardService.getWizardsByHouseId(houseId)
       .subscribe(wizards => this.wizards = wizards);
@@ -69,22 +91,5 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
     } else {
       this.sortField = PipeType.Sort_Age_Dec;
     }
-  }
-
-  openAddWizardDialog() {
-    const dialogRef = this.dialog.open(WizardAddDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      try {
-        if (result.action === EditActions.EDIT) {
-          const wizId = this.wizards.findIndex(w => w.id === result.wizard.id);
-          this.wizards[wizId] = result.wizard;
-        } else if (result.action === EditActions.DELETE) {
-          const index = this.wizards.findIndex(w => w.id === result.wizard.id);
-          this.wizards.splice(index, 1);
-        }
-      } catch (e) {
-        console.log('Client closed the window sloppily...'); // todo: check if comes to this line ---> DONE : comes to this!
-      }
-    });
   }
 }

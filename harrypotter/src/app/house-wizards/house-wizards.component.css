@@ -64,6 +64,7 @@ button:disabled {
 [class*='col-'] {
   float: left;
   padding-right: 20px;
+  padding-top: 40px;
 }
 
 [class*='col-']:last-of-type {
@@ -134,11 +135,12 @@ h4 {
   }
 }
 
-.edit-button{
+.edit-button {
   font-family: Papyrus;
   font-size: 18px;
   font-weight: bolder;
 }
-.wizard-name{
+
+.wizard-name {
   font-family: "Copperplate Gothic Light";
 }

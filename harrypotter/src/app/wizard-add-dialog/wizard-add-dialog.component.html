@@ -4,20 +4,21 @@
 
     <div class="input-field">
       <label class="input-label">Name</label>
-      <input type="text" class="form-control" [(ngModel)]="name" required>
+      <input type="text" class="form-control" [(ngModel)]="wizard.name" required>
     </div>
 
     <div class="input-field">
       <label class="input-label">Age</label>
-      <input type="text" class="form-control" [(ngModel)]="age" required>
+      <input type="text" class="form-control" [(ngModel)]="wizard.age" required>
     </div>
 
     <div class="input-field">
       <label class="input-label">Spells</label>
-      <app-spells-edit [wizard]="passedWizard"></app-spells-edit>
+      <app-spells-edit [wizard]="wizard"></app-spells-edit>
     </div>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
+  <button class="end-buttons" mat-button (click)="saveWizard()">Save</button>
   <button class="end-buttons" mat-button (click)="cancel()">Cancel</button>
 </mat-dialog-actions>

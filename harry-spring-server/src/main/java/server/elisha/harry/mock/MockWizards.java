@@ -44,7 +44,7 @@ public class MockWizards {
         wizards.set(wizards.indexOf(wizard), newWizard);
     }
 
-    public void addWizards(Wizard newWizard) {
+    public void addWizard(Wizard newWizard) {
         wizards.add(newWizard);
     }
 
