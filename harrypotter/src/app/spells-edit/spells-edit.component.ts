@@ -8,7 +8,7 @@ import {map, startWith} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
 import {Spell} from '../entities/spell';
 import {MatAutocomplete} from '@angular/material/autocomplete';
-import swal from 'sweetalert2';
+import {AlertErrorService} from '../services/alert-error.service';
 
 @Component({
   selector: 'app-spells-edit',
@@ -26,7 +26,7 @@ export class SpellsEditComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   // todo: constructor always first and after it the ngOnInit. ---> DONE
-  constructor(private spellsService: SpellsService) {
+  constructor(private spellsService: SpellsService, private alertErrorService: AlertErrorService) {
   }
 
   ngOnInit() {
@@ -50,7 +50,8 @@ export class SpellsEditComponent implements OnInit {
       if (isRealSpell) {
         this.addSpellToWizard(newSpell);
       } else {
-        swal.fire(`The ${newSpell.name} spell doesn't exist in the allowed spell list! Sorry...`);
+        this.alertErrorService
+          .alertError(`The ${newSpell.name} spell doesn't exist in the allowed spell list! Sorry...`);
       }
     }
 
@@ -64,7 +65,8 @@ export class SpellsEditComponent implements OnInit {
       this.wizardSpells.push(newSpell.name);
       this.wizard.spells = this.wizardSpells;
     } else {
-      swal.fire(`The ${newSpell.name} spell is already exists for this wizard! Sorry...`); // todo: implement template string ---> DONE
+      this.alertErrorService
+        .alertError(`The ${newSpell.name} spell is already exists for this wizard! Sorry...`); // todo: implement template string ---> DONE
     }
   }
 
