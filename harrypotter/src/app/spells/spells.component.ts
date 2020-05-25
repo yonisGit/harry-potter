@@ -6,7 +6,7 @@ import {Spell} from '../entities/spell';
 import {WizardService} from '../services/wizard.service';
 import {Wizard} from '../entities/wizard';
 import {Observable} from 'rxjs';
-import swal from 'sweetalert2';
+import {AlertErrorService} from '../services/alert-error.service';
 
 @Component({
   selector: 'app-spells',
@@ -18,7 +18,8 @@ export class SpellsComponent implements OnInit {
   spells: Spell[];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  constructor(private spellsService: SpellsService, private wizardService: WizardService) {
+  constructor(private spellsService: SpellsService, private wizardService: WizardService,
+              private alertErrorService: AlertErrorService) {
   }
 
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class SpellsComponent implements OnInit {
         const newSpell = this.generateSpellWithId(value.trim());
         this.addSpell(newSpell);
       } else {
-        swal.fire('Spell is already exists!');
+        this.alertErrorService.alertError('Spell is already exists!');
       }
     }
 
