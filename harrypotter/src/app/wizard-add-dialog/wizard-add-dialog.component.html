@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Add New Wizard</h2>
+<mat-dialog-content>
+  <div style="width: 600px">
+
+    <div class="input-field">
+      <label class="input-label">Name</label>
+      <input type="text" class="form-control" [(ngModel)]="name" required>
+    </div>
+
+    <div class="input-field">
+      <label class="input-label">Age</label>
+      <input type="text" class="form-control" [(ngModel)]="age" required>
+    </div>
+
+    <div class="input-field">
+      <label class="input-label">Spells</label>
+      <app-spells-edit [wizard]="passedWizard"></app-spells-edit>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="end-buttons" mat-button (click)="cancel()">Cancel</button>
+</mat-dialog-actions>

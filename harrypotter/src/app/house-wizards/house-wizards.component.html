@@ -3,13 +3,14 @@
   <button class="pipe-button" mat-button (click)="sortByName(-1)">Sort By Name Dec</button>
   <button class="pipe-button" mat-button (click)="sortByAge(1)">Sort By Age</button>
   <button class="pipe-button" mat-button (click)="sortByAge(-1)">Sort By Age Dec</button>
+  <button class="pipe-button" mat-button (click)="openAddWizardDialog()">Add New Wizard</button>
   <div>
     <input class="filter-pipe-input" [(ngModel)]="wizardFilterString" placeholder="Filter By Name...">
   </div>
 
   <div class="grid grid-pad">
     <div *ngFor="let wizard of (wizards|sortOrFilter:sortField|wizardNameFilter:wizardFilterString)" class="col-1-3">
-      <button mat-button (click)="openDialog(wizard)" class="edit-button">Edit {{wizard.name}}</button>
+      <button mat-button (click)="openEditWizardDialog(wizard)" class="edit-button">Edit {{wizard.name}}</button>
       <div class="module">
         <img class="image" src={{wizard.image}}>
         <h4 class="wizard-name">{{wizard.name}}</h4>
