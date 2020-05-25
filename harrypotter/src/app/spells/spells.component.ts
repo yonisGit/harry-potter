@@ -5,6 +5,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Spell} from '../entities/spell';
 import {WizardService} from '../services/wizard.service';
 import {Wizard} from '../entities/wizard';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-spells',
@@ -12,6 +13,7 @@ import {Wizard} from '../entities/wizard';
   styleUrls: ['./spells.component.css']
 })
 export class SpellsComponent implements OnInit {
+  observable: Observable<number>;
   spells: Spell[];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
@@ -20,6 +22,15 @@ export class SpellsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSpells();
+    this.observable = Observable.create(observer => {
+      let value = 0;
+      const interval = setInterval(() => {
+        observer.next(value);
+        value++;
+      }, 1000);
+
+      return () => clearInterval(interval);
+    });
   }
 
   add(event: MatChipInputEvent): void {
@@ -30,7 +41,6 @@ export class SpellsComponent implements OnInit {
       const isSpellExistAlready = this.spells.filter(spell => spell.name === value).length > 0;
       if (!isSpellExistAlready) {
         const newSpell = this.generateSpellWithId(value.trim());
-        console.log('full spell is:' + newSpell);
         this.addSpell(newSpell);
       } else {
         alert('Spell is already exists!');
