@@ -7,7 +7,8 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
 import {Spell} from '../entities/spell';
-import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {MatAutocomplete} from '@angular/material/autocomplete';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-spells-edit',
@@ -49,7 +50,7 @@ export class SpellsEditComponent implements OnInit {
       if (isRealSpell) {
         this.addSpellToWizard(newSpell);
       } else {
-        alert(`The ${newSpell.name} spell doesn't exist in the allowed spell list! Sorry...`);
+        swal.fire(`The ${newSpell.name} spell doesn't exist in the allowed spell list! Sorry...`);
       }
     }
 
@@ -63,7 +64,7 @@ export class SpellsEditComponent implements OnInit {
       this.wizardSpells.push(newSpell.name);
       this.wizard.spells = this.wizardSpells;
     } else {
-      alert(`The ${newSpell.name} spell is already exists for this wizard! Sorry...`); // todo: implement template string ---> DONE
+      swal.fire(`The ${newSpell.name} spell is already exists for this wizard! Sorry...`); // todo: implement template string ---> DONE
     }
   }
 
