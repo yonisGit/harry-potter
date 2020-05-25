@@ -61,7 +61,7 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
           this.wizards.push(result.wizard);
         }
       } catch (e) {
-        console.log('Client closed the window sloppily...'); // todo: check if comes to this line ---> DONE : comes to this!
+        console.log('Client closed the window sloppily...');
       }
     });
   }
