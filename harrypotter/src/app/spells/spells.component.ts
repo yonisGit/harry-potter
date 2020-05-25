@@ -5,7 +5,6 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Spell} from '../entities/spell';
 import {WizardService} from '../services/wizard.service';
 import {Wizard} from '../entities/wizard';
-import {MatChipTextControl} from '@angular/material/chips/chip-text-control';
 
 @Component({
   selector: 'app-spells',
