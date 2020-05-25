@@ -6,6 +6,7 @@ import {Spell} from '../entities/spell';
 import {WizardService} from '../services/wizard.service';
 import {Wizard} from '../entities/wizard';
 import {Observable} from 'rxjs';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-spells',
@@ -43,7 +44,7 @@ export class SpellsComponent implements OnInit {
         const newSpell = this.generateSpellWithId(value.trim());
         this.addSpell(newSpell);
       } else {
-        alert('Spell is already exists!');
+        swal.fire('Spell is already exists!');
       }
     }
 
