@@ -49,7 +49,7 @@ export class SpellsEditComponent implements OnInit {
       if (isRealSpell) {
         this.addSpellToWizard(newSpell);
       } else {
-        alert('The ' + newSpell.name + ' spell doesn\'t exist in the allowed spell list! Sorry...');
+        alert(`The ${newSpell.name} spell doesn't exist in the allowed spell list! Sorry...`);
       }
     }
 
@@ -63,7 +63,7 @@ export class SpellsEditComponent implements OnInit {
       this.wizardSpells.push(newSpell.name);
       this.wizard.spells = this.wizardSpells;
     } else {
-      alert('The ' + newSpell.name + ' spell is already exists for this wizard! Sorry...');
+      alert(`The ${newSpell.name} spell is already exists for this wizard! Sorry...`); // todo: implement template string ---> DONE
     }
   }
 
