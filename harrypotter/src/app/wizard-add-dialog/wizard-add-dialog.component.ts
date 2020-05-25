@@ -1,7 +1,8 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Wizard} from '../entities/wizard';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {WizardService} from '../services/wizard.service';
+import {EditActions} from '../entities/edit-actions';
 
 @Component({
   selector: 'app-wizard-add-dialog',
@@ -9,20 +10,23 @@ import {WizardService} from '../services/wizard.service';
   styleUrls: ['../wizard-dialog-content/wizard-dialog-content.component.css']
 })
 export class WizardAddDialogComponent implements OnInit {
-  name: string;
-  age: number;
-  private spells: string[];
-  passedWizard: Wizard;
+  wizard: Wizard;
 
   constructor(public dialogRef: MatDialogRef<WizardAddDialogComponent>,
-              private wizardService: WizardService) {
+              @Inject(MAT_DIALOG_DATA) data, private wizardService: WizardService) {
+    this.wizard = data;
   }
 
   ngOnInit(): void {
   }
 
+  saveWizard() {
+    this.wizardService.addWizard(this.wizard).subscribe(
+      () => this.dialogRef.close({wizard: this.wizard, action: EditActions.ADD})
+    );
+  }
+
   cancel() {
     this.dialogRef.close();
   }
-
 }

@@ -74,7 +74,7 @@ public class Controller {
 
     @PostMapping(path = "/wizards")
     public void addWizard(@RequestBody Wizard newWizard) {
-        mockWizards.addWizards(newWizard);
+        mockWizards.addWizard(newWizard);
     }
 
     @PutMapping(path = "/wizards")

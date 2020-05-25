@@ -22,6 +22,10 @@ export class WizardService {
     return this.http.get<Wizard[]>(this.requestWizards + '/' + houseId);
   }
 
+  addWizard(wizard: Wizard) {
+    return this.http.post(this.requestWizards, wizard);
+  }
+
   editWizard(wizard: Wizard) {
     return this.http.put(this.requestWizards, wizard);
   }
@@ -29,6 +33,4 @@ export class WizardService {
   deleteWizard(wizard: Wizard) {
     return this.http.delete(this.requestWizards + '/' + wizard.id);
   }
-
-
 }
