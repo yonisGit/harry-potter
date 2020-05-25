@@ -6,6 +6,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {WizardDialogContentComponent} from '../wizard-dialog-content/wizard-dialog-content.component';
 import {PipeType} from '../entities/pipe-type';
 import {EditActions} from '../entities/edit-actions';
+import {WizardAddDialogComponent} from '../wizard-add-dialog/wizard-add-dialog.component';
 
 @Component({
   selector: 'app-house-wizards',
@@ -24,7 +25,7 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
-  openDialog(wizard: Wizard) {
+  openEditWizardDialog(wizard: Wizard) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = wizard;
     const dialogRef = this.dialog.open(WizardDialogContentComponent, dialogConfig);
@@ -68,5 +69,22 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
     } else {
       this.sortField = PipeType.Sort_Age_Dec;
     }
+  }
+
+  openAddWizardDialog() {
+    const dialogRef = this.dialog.open(WizardAddDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      try {
+        if (result.action === EditActions.EDIT) {
+          const wizId = this.wizards.findIndex(w => w.id === result.wizard.id);
+          this.wizards[wizId] = result.wizard;
+        } else if (result.action === EditActions.DELETE) {
+          const index = this.wizards.findIndex(w => w.id === result.wizard.id);
+          this.wizards.splice(index, 1);
+        }
+      } catch (e) {
+        console.log('Client closed the window sloppily...'); // todo: check if comes to this line ---> DONE : comes to this!
+      }
+    });
   }
 }

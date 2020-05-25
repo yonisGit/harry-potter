@@ -15,6 +15,7 @@ export class WizardDialogContentComponent implements OnInit {
   passedWizard: Wizard;
   initialSpells: string[];
 
+  // todo: change component name to WizardEditDialogComponent
   constructor(public dialogRef: MatDialogRef<WizardDialogContentComponent>,
               @Inject(MAT_DIALOG_DATA) data, private wizardService: WizardService) {
     this.wizard = data;
