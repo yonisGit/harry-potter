@@ -82,7 +82,7 @@ export class SpellsEditComponent implements OnInit {
         this.allSpells = spells;
         // in order for this to happen only after the above command
         this.filteredOptions = this.myControl.valueChanges.pipe(
-          map(value => value.name),
+          startWith(''),
           map(value => this._filter(value))
         );
       }
@@ -93,7 +93,7 @@ export class SpellsEditComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.allSpells
-      .filter(option => option.name.toLowerCase().startsWith(filterValue) && this.wizardSpells.includes(option.name))
+      .filter(option => option.name.toLowerCase().startsWith(filterValue) && !this.wizardSpells.includes(option.name))
       .map(spell => spell.name);
   }
 
