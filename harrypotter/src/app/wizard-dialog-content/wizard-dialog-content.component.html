@@ -5,11 +5,17 @@
     <div class="input-field">
       <label class="input-label">Name</label>
       <input type="text" class="form-control" [(ngModel)]="passedWizard.name" required>
+      <div *ngIf="!passedWizard.name.trim()" class="validation-content">
+        Invalid Name...
+      </div>
     </div>
 
     <div class="input-field">
       <label class="input-label">Age</label>
       <input type="text" class="form-control" [(ngModel)]="passedWizard.age" required>
+      <div *ngIf="!passedWizard.age" class="validation-content">
+        You must enter age !
+      </div>
     </div>
 
     <div class="input-field">

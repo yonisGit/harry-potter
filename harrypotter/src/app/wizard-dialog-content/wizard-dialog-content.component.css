@@ -72,3 +72,8 @@ constraints {
   color: #e0e0e0;
   background-color: #313d2b;
 }
+
+.validation-content{
+  padding-top: 1em;
+  color: red;
+}

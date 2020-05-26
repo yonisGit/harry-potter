@@ -28,9 +28,11 @@ export class WizardDialogContentComponent implements OnInit {
 
   saveWizard() {
     // todo: use passedWizard here and on the ngModel ---> DONE
-    this.wizardService.editWizard(this.passedWizard).subscribe(
-      () => this.dialogRef.close({wizard: this.passedWizard, action: EditActions.EDIT})
-    );
+    if (this.passedWizard.name.trim() && this.passedWizard.age) {
+      this.wizardService.editWizard(this.passedWizard).subscribe(
+        () => this.dialogRef.close({wizard: this.passedWizard, action: EditActions.EDIT})
+      );
+    }
   }
 
   deleteWizard() {
