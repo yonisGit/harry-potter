@@ -34,16 +34,24 @@ export class SpellsEditComponent implements OnInit {
     this.getSpells();
   }
 
-  // todo: refactor function ---> kind of DONE
+  // todo: refactor function ---> DONE
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
-    if (value.trim()) { // todo: remove trim and '' everywhere. ---> DONE
+    this.createAndAddSpellToWizard(value);
+
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  private createAndAddSpellToWizard(spellName: string) {
+    if (spellName.trim()) { // todo: remove trim and '' everywhere. ---> DONE
       const newSpell =
         {
-          id: this.allSpells.findIndex(spell => spell.name === value),
-          name: value.trim()
+          id: this.allSpells.findIndex(spell => spell.name === spellName),
+          name: spellName.trim()
         };
 
       const isRealSpell = this.allSpells.map(spell => spell.name).includes(newSpell.name);
@@ -53,10 +61,6 @@ export class SpellsEditComponent implements OnInit {
         this.alertErrorService
           .alertError(`The ${newSpell.name} spell doesn't exist in the allowed spell list! Sorry...`);
       }
-    }
-
-    if (input) {
-      input.value = '';
     }
   }
 
