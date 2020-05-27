@@ -39,7 +39,7 @@ export class SpellsComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    if (value.trim()) { // todo: remove if not needed ----> DONE
+    if (value.trim()) {
       const isSpellExistAlready = this.spells.filter(spell => spell.name === value).length > 0;
       if (!isSpellExistAlready) {
         const newSpell = this.generateSpellWithId(value.trim());
@@ -89,7 +89,7 @@ export class SpellsComponent implements OnInit {
         wizardSpells.splice(index, 1);
         wizard.spells = wizardSpells;
         this.wizardService.editWizard(wizard).subscribe(() => {
-        }); // todo: check what to do instead of this empty func
+        });
       }
     });
   }

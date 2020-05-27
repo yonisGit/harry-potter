@@ -9,9 +9,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./houses.component.css']
 })
 export class HousesComponent implements OnInit {
-  // todo : remove the logic from the house-tabs component and only left the selectedHouse in house-tabs.
   houses: House[];
-  selectedHouse: House;
 
   constructor(private houseService: HouseService) {
   }
@@ -24,9 +22,5 @@ export class HousesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHouses();
-  }
-
-  onSelect(house: House) {
-    this.selectedHouse = house;
   }
 }

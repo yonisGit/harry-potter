@@ -16,8 +16,8 @@ import {WizardAddDialogComponent} from '../wizard-add-dialog/wizard-add-dialog.c
 export class HouseWizardsComponent implements OnInit, OnChanges {
   @Input() house: House;
   wizards: Wizard[];
-  wizardFilterString: string; // todo: rename to wizardFilterPrefix ----> DONE
-  sortField: PipeType; // todo: rename to sortField ---> DONE
+  wizardFilterString: string;
+  sortField: PipeType;
 
   constructor(private wizardService: WizardService, private dialog: MatDialog) {
   }
@@ -39,7 +39,7 @@ export class HouseWizardsComponent implements OnInit, OnChanges {
           this.wizards.splice(index, 1);
         }
       } catch (e) {
-        console.log('Client closed the window sloppily...'); // todo: check if comes to this line ---> DONE : comes to this!
+        console.log('Client closed the window sloppily...');
       }
     });
   }

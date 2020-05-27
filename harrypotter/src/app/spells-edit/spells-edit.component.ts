@@ -25,7 +25,6 @@ export class SpellsEditComponent implements OnInit {
   @ViewChild('spellInput') spellInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-  // todo: constructor always first and after it the ngOnInit. ---> DONE
   constructor(private spellsService: SpellsService, private alertErrorService: AlertErrorService) {
   }
 
@@ -34,12 +33,11 @@ export class SpellsEditComponent implements OnInit {
     this.getSpells();
   }
 
-  // todo: refactor function ---> DONE
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
-    this.createAndAddSpellToWizard(value);
+    this.createAndAddSpellToWizard(value.trim());
 
     if (input) {
       input.value = '';
@@ -47,15 +45,10 @@ export class SpellsEditComponent implements OnInit {
   }
 
   private createAndAddSpellToWizard(spellName: string) {
-    if (spellName.trim()) { // todo: remove trim and '' everywhere. ---> DONE
-      const newSpell =
-        {
-          id: this.allSpells.findIndex(spell => spell.name === spellName),
-          name: spellName.trim()
-        };
+    if (spellName) {
+      const newSpell = this.allSpells.find(spell => spell.name === spellName);
 
-      const isRealSpell = this.allSpells.map(spell => spell.name).includes(newSpell.name);
-      if (isRealSpell) {
+      if (!!newSpell) {
         this.addSpellToWizard(newSpell);
       } else {
         this.alertErrorService
@@ -70,12 +63,12 @@ export class SpellsEditComponent implements OnInit {
       this.wizard.spells = this.wizardSpells;
     } else {
       this.alertErrorService
-        .alertError(`The ${newSpell.name} spell is already exists for this wizard! Sorry...`); // todo: implement template string ---> DONE
+        .alertError(`The ${newSpell.name} spell is already exists for this wizard! Sorry...`);
     }
   }
 
   remove(spell: string): void {
-    const index = this.wizardSpells.indexOf(spell); // todo: use includes ---> I need the index here so its indexOf
+    const index = this.wizardSpells.indexOf(spell);
 
     if (index >= 0) {
       this.wizardSpells.splice(index, 1);

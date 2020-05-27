@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {House} from '../entities/house';
 import {HouseService} from '../services/house.service';
 
@@ -8,21 +8,13 @@ import {HouseService} from '../services/house.service';
   styleUrls: ['./house-tabs.component.css']
 })
 export class HouseTabsComponent implements OnInit {
-  houses: House[];
+  @Input() houses: House[];
   selectedHouse: House;
 
-  // todo : change name of component to house-component. ---> DONE
-  constructor(private houseService: HouseService) {
-  }
-
-  getHouses(): void {
-    this.houseService.getHouses().subscribe(
-      houses => this.houses = houses
-    );
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.getHouses();
   }
 
   onSelect(house: House) {

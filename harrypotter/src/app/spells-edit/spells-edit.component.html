@@ -17,7 +17,6 @@
            [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-option *ngFor="let spellOption of spellsOptions | async" [value]="spellOption">
-<!--        todo: check if works without the async DONE-&ndash;&gt; DONE : doesnt work without-->
         {{spellOption}}
       </mat-option>
     </mat-autocomplete>

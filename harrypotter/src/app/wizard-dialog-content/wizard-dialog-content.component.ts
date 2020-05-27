@@ -15,7 +15,6 @@ export class WizardDialogContentComponent implements OnInit {
   passedWizard: Wizard;
   initialSpells: string[];
 
-  // todo: change component name to WizardEditDialogComponent
   constructor(public dialogRef: MatDialogRef<WizardDialogContentComponent>,
               @Inject(MAT_DIALOG_DATA) data, private wizardService: WizardService) {
     this.wizard = data;
@@ -23,11 +22,10 @@ export class WizardDialogContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.initialSpells = this.wizard.spells;
-    this.passedWizard = {...this.wizard}; // todo: change to {... this.wizard} ---> DONE
+    this.passedWizard = {...this.wizard};
   }
 
   saveWizard() {
-    // todo: use passedWizard here and on the ngModel ---> DONE
     if (this.passedWizard.name.trim() && this.passedWizard.age) {
       this.wizardService.editWizard(this.passedWizard).subscribe(
         () => this.dialogRef.close({wizard: this.passedWizard, action: EditActions.EDIT})
